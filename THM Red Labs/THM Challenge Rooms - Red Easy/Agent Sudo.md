@@ -47,3 +47,5 @@ Nmap done: 1 IP address (1 host up) scanned in 118.77 seconds
 > [!info]
 > In the extract above, not only do we learn about the name chris, we know theres a agent J and Chris has a weak password
 
+> [!question]
+> FTP password
