@@ -62,7 +62,8 @@ Check every entry where it seems data can be stored and then shown for other use
     - Root element
       - Element `<title>`
       - etc.
-
+for DOM XSS - JS execs. happens in the browser directly without any new page being loaded or data being submitted to the backend code. 
+Execs. occur when the website JS code acts on input/user interaction.
 #### Blind XSS
 - Similar to stored XSS in that stored data gets seen by other users
 - However, you can't see the payload or test it against yourself
