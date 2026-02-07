@@ -238,6 +238,26 @@ steghide: could not extract any data with that passphrase!
 > ```
 
 > [!info]
-> Initially thought the message was related to a user (QXJ1YTUx) but it was referring to a place which is Area51 and is the steg password also managed to get the answer to the following questions:
+> Initially thought the message was related to a user (QXJ1YTUx) but it was referring to a place which is Area51:
+> ![](assets/base64%20area51.png)
+>  and is the steg password also managed to get the answer to the following questions:
 > > [!question]
-> 
+> >  & fdgfdgfdgfdgf
+> > 
+>```
+>┌──(kali㉿kali)-[~]
+└─$ steghide extract -sf cute-alien.jpg                      
+Enter passphrase: 
+steghide: could not extract any data with that passphrase!
+┌──(kali㉿kali)-[~]
+└─$ steghide extract -sf cute-alien.jpg
+Enter passphrase: 
+wrote extracted data to "message.txt".
+┌──(kali㉿kali)-[~]
+└─$ cat message.txt 
+Hi james,
+Glad you find this message. Your login password is hackerrules!
+Don't ask me why the password look cheesy, ask agent R who set this password for you.
+Your buddy,
+chris
+>```
