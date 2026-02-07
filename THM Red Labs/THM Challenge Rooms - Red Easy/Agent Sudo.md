@@ -34,4 +34,9 @@ Nmap done: 1 IP address (1 host up) scanned in 118.77 seconds
 > How you redirect yourself to a secret page?
 
 > [!note]
-> Just put the target IP in firefox and got the answer user-agent
+> Just put the target IP in firefox and got the answer user-agent:
+>![](assets/user-agent%20mainpage.png)
+
+> [!question]
+> What is the agent name?
+
