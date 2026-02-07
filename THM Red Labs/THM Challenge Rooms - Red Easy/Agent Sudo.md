@@ -96,3 +96,8 @@ Agent C
 > ![](assets/Alien%20images.png)
 > i need to find out if images have anything useful via steganography
 
+> [!note]
+> OK used claude as I knew what I needed to do and went down a rabbit hole that led me to the ZIP password as follows:
+> ```
+> 
+> ```
