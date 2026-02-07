@@ -237,3 +237,7 @@ Enter passphrase:
 steghide: could not extract any data with that passphrase!
 > ```
 
+> [!info]
+> Initially thought the message was related to a user (QXJ1YTUx) but it was referring to a place which is Area51 and is the steg password also managed to get the answer to the following questions:
+> > [!question]
+> 
