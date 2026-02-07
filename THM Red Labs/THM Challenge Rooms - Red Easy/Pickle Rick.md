@@ -232,4 +232,4 @@ cat 3rd.txt
 > [!success]
 > fleeb juice
 
-![[Pickle Rick complete.png]]
+![Pickle Rick complete.png](Pickle%20Rick%20complete.png)
