@@ -268,6 +268,35 @@ chris
 > [!note]
 > SSH'd and immediately ran some basic commands and realised I got the POWA as you'll see and found the user flag:
 > ```
-> 
+> ┌──(kali㉿kali)-[~/_cutie.png.extracted]
+└─$ ssh james@10.65.183.121                           
+The authenticity of host '10.65.183.121 (10.65.183.121)' can't be established.
+ED25519 key fingerprint is SHA256:rt6rNpPo1pGMkl4PRRE7NaQKAHV+UNkS9BfrCy8jVCA.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.65.183.121' (ED25519) to the list of known hosts.
+james@10.65.183.121's password: 
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-55-generic x86_64)
+System information as of Sat Feb  7 14:53:42 UTC 2026
+System load:  0.0               Processes:           102
+Usage of /:   39.9% of 9.78GB   Users logged in:     0
+Memory usage: 22%               IP address for ens5: 10.65.183.121
+Swap usage:   0%
+75 packages can be updated.
+33 updates are security updates.
+Last login: Tue Oct 29 14:26:27 2019
+james@agent-sudo:~$ sudo -l
+[sudo] password for james: 
+Matching Defaults entries for james on agent-sudo:
+env_reset, mail_badpass,
+secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+User james may run the following commands on agent-sudo:
+(ALL, !root) /bin/bash
+james@agent-sudo:~$ ls
+Alien_autospy.jpg  user_flag.txt
+james@agent-sudo:~$ cat user_flag.txt 
+b03d975e8c92a7c04146cfa7a5a313c7
 > ```
+
+
 
