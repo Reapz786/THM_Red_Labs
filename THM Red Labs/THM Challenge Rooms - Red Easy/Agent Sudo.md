@@ -309,6 +309,14 @@ b03d975e8c92a7c04146cfa7a5a313c7
 
 > [!note]
 > Using earlier knowledge about the /bin/bash, i put the following into google to see if any CVE relates to this and it did:
-> 
+> ![](assets/binbash%20CVE.png)
+
+> [!question]
+> What is the root flag?
+
+> [!info]
+> Could use different way to exploit and privilege escalate so lets try a few in mind and see how I get on:
+
+
 
 
