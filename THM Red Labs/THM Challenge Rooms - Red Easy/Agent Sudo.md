@@ -302,6 +302,11 @@ b03d975e8c92a7c04146cfa7a5a313c7
 > What is the incident of the photo called?
 
 > [!note]
-> Saw the image file and thought it was another steg situation but 
+> Saw the image file and thought it was another steg situation but using the THM hints, I learnt to reverse image search and filter for fox news and found the answer to be Roswell alien autopsy
+
+> [!question]
+> CVE number for the escalation
+
+
 
 
