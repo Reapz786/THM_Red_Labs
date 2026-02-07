@@ -283,14 +283,14 @@ Finished
 ```
 > [!NOTE]
 > Looking individually /module revealed nothing interesting even with loads of folders
-![[simplemodules.png]]
+![simplemodules.png](/assets/simplemodules.png)
 >
 > /uploads, /doc lead to nowhere, /admin led to admin login page which I dont have creds for and /assets led to somewhere but nowhere also:
-![[simpleassets.png]]
+![simpleassets.png](assets/simpleassets.png)
 > 
 > /lib led nowhere and /tmp led somewhere but nowhere too.
 > 
-![[simpletmp.png]]
+![simpletmp.png](assets/simpletmp.png)
 
 > [!info]
 > Looking online at CMS made simple for a username being admin but password can be cracked?
@@ -298,11 +298,11 @@ Finished
 
 > [!note]
 > OK found a useful github link which I feel is cheating but I did just google the CVE and this is what came up https://github.com/Dh4nuJ4/SimpleCTF-UpdatedExploit
-![[Github python3 method.png]]
+![Github python3 method.png](assets/Github%20python3%20method.png)
 
 > [!info]
 > Realised hashed password didnt come through due to incorrect option insert of -c and had to manually download the wordlist for some reason it didnt exist where its supposed to be?
-> ![[github exploit for hashed pwd.png]]
+> ![github exploit for hashed pwd.png](assets/github%20exploit%20for%20hashed%20pwd.png)
 
 > [!important]
 > Target IP = 10.66.154.113
@@ -319,21 +319,21 @@ Finished
 > ssh mitch@10.66.154.113
 > ```
 > with password secret worked
-![[SSH login as Mitch.png]]
+![SSH login as Mitch.png](/assets/SSH%20login%20as%20Mitch.png)
 
 > [!question]
 > What's the user flag?
 
 > [!note]
 > simply using cat cmd i found the file which had the flag:
-![[user flag.png]]
+![user flag.png](assets/user%20flag.png)
 
 > [!question]
 > Is there any other user in the home directory? What's its name?
 
 > [!note]
 > simply backing out into the home folder allows me to see another user called sunbath:
-> ![[home folder users.png]]
+> ![home folder users.png](assets/home%20folder%20users.png)
 
 > [!question]
 > What can you leverage to spawn a privileged shell?
