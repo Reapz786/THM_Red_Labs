@@ -182,6 +182,3 @@ Execs. occur when the website JS code acts on input/user interaction.
 
 ---
 
-## Notes
-- These are working notes from TryHackMe pen testing path
-- Content may contain some rough areas that need further review and expansion
