@@ -353,4 +353,6 @@ root@agent-sudo:/root#
 
 > [!success]
 > Annoyed about this cause i spent some time trying to crack shadow/passwd, checking google etc. to realise Deskel is Agent R. I thought the R was short for somehting starting with R lol.
-> Anyway the answer is DesKel
+> Anyway the answer is DesKel![](assets/Agent%20Sudo%20completed.png)
+
+
