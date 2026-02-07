@@ -3,9 +3,9 @@
   "autoCommitMessage": "vault backup: {{date}}",
   "commitMessageScript": "",
   "commitDateFormat": "DD-MM-YYYY HH:mm:ss",
-  "autoSaveInterval": 5,
+  "autoSaveInterval": 2,
   "autoPushInterval": 0,
-  "autoPullInterval": 5,
+  "autoPullInterval": 2,
   "autoPullOnBoot": true,
   "autoCommitOnlyStaged": false,
   "disablePush": false,
@@ -38,7 +38,7 @@
   "hunks": {
     "showSigns": false,
     "hunkCommands": false,
-    "statusBar": "disabled"
+    "statusBar": "colored"
   },
   "lineAuthor": {
     "show": false,
@@ -61,7 +61,7 @@
     },
     "textColorCss": "var(--text-muted)",
     "ignoreWhitespace": false,
-    "gutterSpacingFallbackLength": 5,
+    "gutterSpacingFallbackLength": 12,
     "lastShownAuthorDisplay": "initials",
     "lastShownDateTimeFormatOptions": "date"
   }
