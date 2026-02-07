@@ -40,3 +40,9 @@ Nmap done: 1 IP address (1 host up) scanned in 118.77 seconds
 > [!question]
 > What is the agent name?
 
+> [!note]
+> Had to get a hint and realised user-agent can be amended via firefox so used claude to help on how to change user-agent - noticed agent at bottom was named agent R so they use first letter of name only so logically I would ahve to go to A then B and then got the answer at C
+> ![](assets/Agent%20Chris.png)
+
+> [!info]
+> In the extract above, not only do we learn about the name chris, we know theres a agent J and Chris has a weak password
