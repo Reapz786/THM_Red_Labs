@@ -49,3 +49,6 @@ Nmap done: 1 IP address (1 host up) scanned in 118.77 seconds
 
 > [!question]
 > FTP password
+
+> [!note]
+> Got a hint of hail hydra from THM so search 
