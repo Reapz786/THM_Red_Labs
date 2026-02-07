@@ -146,5 +146,45 @@ WARNING: One or more files failed to extract: either no utility was found or it'
 > [!note]
 > Lets see the results
 > ```
-> 
+┌──(kali㉿kali)-[~/_cutie.png.extracted]
+└─$ unzip 8702.zip 
+Archive:  8702.zip
+   skipping: To_agentR.txt           need PK compat. v5.1 (can do v4.6)
+┌──(kali㉿kali)-[~/_cutie.png.extracted]
+└─$ ls
+365  365.zlib  8702.zip
+┌──(kali㉿kali)-[~/_cutie.png.extracted]
+└─$ 7z x 8702.zip
+7-Zip 25.01 (x64) : Copyright (c) 1999-2025 Igor Pavlov : 2025-08-03
+ 64-bit locale=en_US.UTF-8 Threads:2 OPEN_MAX:1024, ASM
+Scanning the drive for archives:
+1 file, 280 bytes (1 KiB)
+Extracting archive: 8702.zip
+Path = 8702.zip
+Type = zip
+Physical Size = 280
+Enter password (will not be echoed):
+ERROR: Wrong password : To_agentR.txt
+Sub items Errors: 1
+Archives with Errors: 1
+Sub items Errors: 1
+┌──(kali㉿kali)-[~/_cutie.png.extracted]
+└─$ zip2john 8702.zip > hash.txt
+┌──(kali㉿kali)-[~/_cutie.png.extracted]
+└─$ ls
+365  365.zlib  8702.zip  hash.txt  To_agentR.txt
+┌──(kali㉿kali)-[~/_cutie.png.extracted]
+└─$ cat To_agentR.txt 
+┌──(kali㉿kali)-[~/_cutie.png.extracted]
+└─$ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt   
+Using default input encoding: UTF-8
+Loaded 1 password hash (ZIP, WinZip [PBKDF2-SHA1 256/256 AVX2 8x])
+Cost 1 (HMAC size) is 78 for all loaded hashes
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+alien            (8702.zip/To_agentR.txt)     
+1g 0:00:00:00 DONE (2026-02-07 09:21) 2.173g/s 53426p/s 53426c/s 53426C/s michael!..280789
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
 > ```
+
