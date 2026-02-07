@@ -92,4 +92,7 @@ All these alien like photos are fake! Agent R stored the real picture inside you
 From,
 Agent C
 > ```
-> and images were nothing significant
+> and images were as follows:
+> ![](assets/Alien%20images.png)
+> i need to find out if images have anything useful via steganography
+
