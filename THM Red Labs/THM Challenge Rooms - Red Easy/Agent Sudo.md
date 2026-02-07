@@ -188,3 +188,12 @@ Use the "--show" option to display all of the cracked passwords reliably
 Session completed. 
 > ```
 
+> [!tldr]
+> The ZIP password was alien.
+
+> [!question]
+> steg password
+
+> [!info]
+> With the unzip passphrase as alien, im hoping the extracted file will reveal the steg password but lets see.
+
