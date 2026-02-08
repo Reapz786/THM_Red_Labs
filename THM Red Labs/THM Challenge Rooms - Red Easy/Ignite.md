@@ -235,7 +235,6 @@ drwxr-xr-x  2 root root 4096 Jul 26  2019 .nano
 -rw-r--r--  1 root root   34 Jul 26  2019 root.txt
 root@ubuntu:~# cat root.txt
 cat root.txt
-b9bbcb33e11b80be759c4e844862482d 
-root@ubuntu:~# 
-
+b9bbcb33e11b80be759c4e844862482d
 ```
+![](assets/Great%20Success.png)
