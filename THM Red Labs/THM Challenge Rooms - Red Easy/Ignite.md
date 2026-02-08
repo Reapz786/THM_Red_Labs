@@ -96,4 +96,5 @@ Finished
 ![](assets/Pasted%20image%2020260208095840.png)
 ![](assets/admin%20login.png)
 > [!note]
-> As you can see, I am in with admin:admin already but i need to get a reverse shell I believe to be able to get user & root flag Fuel CMS version is 1.4 and CVE-2018-16763 targets this with RCE
+> As you can see, I am in with admin:admin already but i need to get a reverse shell to be able to get user & root flag as Fuel CMS version is 1.4 and CVE-2018-16763 targets this with RCE.
+
