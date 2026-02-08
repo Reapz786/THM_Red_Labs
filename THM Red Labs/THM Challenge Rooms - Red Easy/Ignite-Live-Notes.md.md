@@ -52,5 +52,38 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 132.11 seconds
 ```
 ```
-
+┌──(kali㉿kali)-[~]
+└─$ gobuster dir -u http://10.66.139.221/ -w /usr/share/dirb/wordlists/common.txt
+===============================================================
+Gobuster v3.8
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.66.139.221/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/dirb/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.8
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/.hta                 (Status: 403) [Size: 292]
+/.htaccess            (Status: 403) [Size: 297]
+/.htpasswd            (Status: 403) [Size: 297]
+/@                    (Status: 400) [Size: 1134]
+/0                    (Status: 200) [Size: 16597]
+/assets               (Status: 301) [Size: 315] [--> http://10.66.139.221/assets/]                                                                    
+/home                 (Status: 200) [Size: 16597]
+/index                (Status: 200) [Size: 16597]
+/index.php            (Status: 200) [Size: 16597]
+/lost+found           (Status: 400) [Size: 1134]
+/offline              (Status: 200) [Size: 70]
+/robots.txt           (Status: 200) [Size: 30]
+/server-status        (Status: 403) [Size: 301]
+Progress: 4613 / 4613 (100.00%)
+===============================================================
+Finished
+===============================================================
 ```
+![](assets/Fuel%20CMS%20v1.4%20main%20site.png)
