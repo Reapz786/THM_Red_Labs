@@ -156,5 +156,11 @@ flag.txt
 www-data@ubuntu:/home/www-data$ cat fla
 cat flag.txt 
 6470e394cbf6dab6a91682cc8585059b 
-
 ```
+
+> [!important]
+> Found the User.txt flag as above
+
+> [!info]
+> Need to know how to privilege escalate now but I dont know sudo password...
+
