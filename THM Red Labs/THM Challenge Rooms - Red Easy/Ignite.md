@@ -5,6 +5,9 @@
 > [!important]
 > Target ip: 10.66.139.221
 
+> [!important]
+> Find User.txt
+
 > [!info]
 > Ok Root box is end goal. I need to enumerate. I'll use gobuster/nmap/browse the site for vulns.
 
@@ -117,5 +120,41 @@ bash: no job control in this shell
 www-data@ubuntu:/var/www/html$ ls
 ```
 ```
+www-data@ubuntu:/var/www/html$ ls
+ls
+README.md
+assets
+composer.json
+contributing.md
+fuel
+index.php
+robots.txt
+www-data@ubuntu:/var/www/html$ cd ..
+cd ..
+www-data@ubuntu:/var/www$  cd ..
+ cd ..
+www-data@ubuntu:/var$ cd ..
+cd ..
+www-data@ubuntu:/$ cd ..
+cd ..
+www-data@ubuntu:/$ whoami 
+whoami
+www-data
+www-data@ubuntu:/$ cd root
+cd root
+bash: cd: root: Permission denied
+www-data@ubuntu:/$ cd /home
+cd /home
+www-data@ubuntu:/home$ ls
+ls
+www-data
+www-data@ubuntu:/home$ cd w
+cd www-data/
+www-data@ubuntu:/home/www-data$ ls
+ls
+flag.txt
+www-data@ubuntu:/home/www-data$ cat fla
+cat flag.txt 
+6470e394cbf6dab6a91682cc8585059b 
 
 ```
