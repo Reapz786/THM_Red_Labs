@@ -93,11 +93,11 @@ Finished
 > [!info]
 > before getting into the site section as its a lot of enumeration I did, nmap revealed only 1 port available which was port 80 and gobuster revealed a few filepaths to try so I included them below and will review them with more information.
 
-![](Obsidian%20assets/Fuel%20CMS%20v1.4%20main%20site.png)
-![](Obsidian%20assets/robots.txt.png)
-![](Obsidian%20assets/login%20with%20base64%20encoded.png)
-![](Obsidian%20assets/Pasted%20image%2020260208095840.png)
-![](Obsidian%20assets/admin%20login.png)
+![](assets/Fuel%20CMS%20v1.4%20main%20site.png)
+![](assets/robots.txt.png)
+![](assets/login%20with%20base64%20encoded.png)
+![](assets/Pasted%20image%2020260208095840.png)
+![](assets/admin%20login.png)
 > [!note]
 > As you can see, I am in with admin:admin already but i need to get a reverse shell to be able to get user & root flag as Fuel CMS version is 1.4 and CVE-2018-16763 targets this with RCE.
 
@@ -166,7 +166,7 @@ cat flag.txt
 
 > [!note]
 > After trial/error of many types of privilege escalation, I realised the original site contained all the info I need to enumerate further so looking at the following info:
-![](Obsidian%20assets/DB%20config%20data.png)
+![](assets/DB%20config%20data.png)
 I was able to determine where I would need to go to find some information and if I didnt, there was still more info on the site to help me enumerate further.
 
 ```
@@ -237,4 +237,4 @@ root@ubuntu:~# cat root.txt
 cat root.txt
 b9bbcb33e11b80be759c4e844862482d
 ```
-![](Obsidian%20assets/Great%20Success.png)
+![](assets/Great%20Success.png)
