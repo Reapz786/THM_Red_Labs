@@ -8,7 +8,7 @@ This Rick and Morty-themed challenge requires you to exploit a web server and fi
 
 > [!Note]
 > Immediately inspecting the page source allowed me to find a username called R1ckRul3s
-![Pickle Rick - page source 1.png](/assets/Pickle%20Rick%20-%20page%20source%201.png)
+![Pickle Rick - page source 1.png](../../Obsidian%20assets/Pickle%20Rick%20-%20page%20source%201.png)
 
 > [!info]
 > Where can I use this username? Need to enumerate further...
@@ -67,25 +67,25 @@ Finished
 
 > [!note]
 > Ok so only 2 service ports available - SSH port 22 and HTTP port 80 - gobuster enumeration led me to useful site via /assets
-> ![assets.png](/assets/assets.png)
+> ![assets.png](../../Obsidian%20assets/assets.png)
 
 > [!info]
 > jQuery v3.3.1 found in jquery.min.js - Bootstrap v3.4.0 in bootstrap.min.css - those file didnt really show much but could be steganography? Anyway apache Apache/2.4.41 so vulnerability with that?
 
 > [!note]
 > Through some online OSINT checks aka cheating lol, I found that I can explore robots.txt which revealed Wubbalubbadubdub and login.php - using this i was able to sign in and have access to a CLI:
-![login.php.png](/assets/login.php.png)
+![login.php.png](../../Obsidian%20assets/login.php.png)
 
 > [!note]
 > Tested a few cmds and realised some work, some dont and revealed the following with:
 > ```
 > ls -la
 > ```
-> ![[ls -la.png]]
+> ![[../../Obsidian assets/ls -la.png]]
 
 > [!note]
 > Used cat cmd and it said it was disabled:
-![super ingredient file.png](/assets/super%20ingredient%20file.png)
+![super ingredient file.png](../../Obsidian%20assets/super%20ingredient%20file.png)
 
 > [!note]
 > I did:
@@ -232,4 +232,4 @@ cat 3rd.txt
 > [!success]
 > fleeb juice
 
-![Pickle Rick complete.png](/assets/Pickle%20Rick%20complete.png)
+![Pickle Rick complete.png](../../Obsidian%20assets/Pickle%20Rick%20complete.png)

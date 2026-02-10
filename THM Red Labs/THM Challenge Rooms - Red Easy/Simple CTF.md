@@ -283,14 +283,14 @@ Finished
 ```
 > [!NOTE]
 > Looking individually /module revealed nothing interesting even with loads of folders
-![simplemodules.png](/assets/simplemodules.png)
+![simplemodules.png](../../Obsidian%20assets/simplemodules.png)
 >
 > /uploads, /doc lead to nowhere, /admin led to admin login page which I dont have creds for and /assets led to somewhere but nowhere also:
-![simpleassets.png](assets/simpleassets.png)
+![simpleassets.png](../../Obsidian%20assets/simpleassets.png)
 > 
 > /lib led nowhere and /tmp led somewhere but nowhere too.
 > 
-![simpletmp.png](assets/simpletmp.png)
+![simpletmp.png](../../Obsidian%20assets/simpletmp.png)
 
 > [!info]
 > Looking online at CMS made simple for a username being admin but password can be cracked?
@@ -298,11 +298,11 @@ Finished
 
 > [!note]
 > OK found a useful github link which I feel is cheating but I did just google the CVE and this is what came up https://github.com/Dh4nuJ4/SimpleCTF-UpdatedExploit
-![Github python3 method.png](assets/Github%20python3%20method.png)
+![Github python3 method.png](../../Obsidian%20assets/Github%20python3%20method.png)
 
 > [!info]
 > Realised hashed password didnt come through due to incorrect option insert of -c and had to manually download the wordlist for some reason it didnt exist where its supposed to be?
-> ![github exploit for hashed pwd.png](assets/github%20exploit%20for%20hashed%20pwd.png)
+> ![github exploit for hashed pwd.png](../../Obsidian%20assets/github%20exploit%20for%20hashed%20pwd.png)
 
 > [!important]
 > Target IP = 10.66.154.113
@@ -319,21 +319,21 @@ Finished
 > ssh mitch@10.66.154.113
 > ```
 > with password secret worked
-![SSH login as Mitch.png](/assets/SSH%20login%20as%20Mitch.png)
+![SSH login as Mitch.png](../../Obsidian%20assets/SSH%20login%20as%20Mitch.png)
 
 > [!question]
 > What's the user flag?
 
 > [!note]
 > simply using cat cmd i found the file which had the flag:
-![user flag.png](assets/user%20flag.png)
+![user flag.png](../../Obsidian%20assets/user%20flag.png)
 
 > [!question]
 > Is there any other user in the home directory? What's its name?
 
 > [!note]
 > simply backing out into the home folder allows me to see another user called sunbath:
-> ![home folder users.png](assets/home%20folder%20users.png)
+> ![home folder users.png](../../Obsidian%20assets/home%20folder%20users.png)
 
 > [!question]
 > What can you leverage to spawn a privileged shell?
@@ -383,7 +383,7 @@ W3ll d0n3. You made it!
 root@Machine:/root# > 
 > ```
 
-![Simple CTF DONE.png](/assets/Simple%20CTF%20DONE.png)
+![Simple CTF DONE.png](../../Obsidian%20assets/Simple%20CTF%20DONE.png)
 
 
 
