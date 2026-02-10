@@ -1,0 +1,49 @@
+# Site Configuration
+title: "Reapz786 - Penetration Testing Portfolio"
+description: "Offensive security portfolio documenting penetration testing challenges, exploits, and security research"
+url: "https://reapz786.github.io"
+baseurl: "/THM_Red_Labs"
+
+# Author Information
+author:
+  name: "Ehsan Ali"
+  github: "Reapz786"
+  email: "ehsan.ali786@outlook.com"
+  linkedin: "https://www.linkedin.com/in/ehsan-ali-469ab5152"
+  tryhackme: "https://tryhackme.com/p/EAli"
+  hackthebox: "https://profile.hackthebox.com/profile/019c45c6-cd43-7168-9403-cbb98be6366a"
+
+# Build Settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: bash
+
+# Collections
+collections:
+  writeups:
+    output: true
+    permalink: /writeups/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "writeups"
+    values:
+      layout: "writeup"
+
+# Exclude files from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
