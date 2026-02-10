@@ -22,18 +22,38 @@ kramdown:
     default_lang: bash
     css_class: 'highlight'
 
-# Include all markdown files from THM Red Labs directories
+# Include all necessary directories
 include:
   - "THM Red Labs"
+  - "HTB Labs"
 
-# Defaults for frontmatter
+# Copy assets from writeup directories
+keep_files:
+  - assets
+
+# Collections for write-ups
+collections:
+  thm_writeups:
+    output: true
+    permalink: /thm/:path/
+  htb_writeups:
+    output: true
+    permalink: /htb/:path/
+
+# Defaults
 defaults:
   - scope:
       path: "THM Red Labs"
     values:
       layout: "writeup"
+      platform: "THM"
+  - scope:
+      path: "HTB Labs"
+    values:
+      layout: "writeup"
+      platform: "HTB"
 
-# Exclude files from build
+# Exclude from build
 exclude:
   - README.md
   - Gemfile

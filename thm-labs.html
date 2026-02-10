@@ -1,30 +1,19 @@
 ---
 layout: default
-title: All Write-ups
-permalink: /browse/
+title: TryHackMe Red Labs
+permalink: /thm-labs/
 ---
 
 <section class="writeups-section" style="padding: 3rem 0;">
     <div class="container">
         <header class="browse-header" style="text-align: center; margin-bottom: var(--spacing-xl);">
-            <h1 style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);">All Write-ups</h1>
+            <h1 style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);">TryHackMe Red Labs</h1>
             {% assign thm_writeups = site.pages | where_exp: "page", "page.path contains 'THM Red Labs'" | where_exp: "page", "page.path contains '.md'" %}
-            {% assign htb_writeups = site.pages | where_exp: "page", "page.path contains 'HTB Labs'" | where_exp: "page", "page.path contains '.md'" %}
-            {% assign all_writeups = thm_writeups | concat: htb_writeups %}
-            <p style="color: var(--text-secondary); font-size: 1.125rem;">{{ all_writeups.size }} total challenges ({{ thm_writeups.size }} THM + {{ htb_writeups.size }} HTB)</p>
+            <p style="color: var(--text-secondary); font-size: 1.125rem;">{{ thm_writeups.size }} penetration testing challenges documented</p>
         </header>
 
         <!-- Filters -->
         <div class="filters" style="display: flex; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-xl); padding: var(--spacing-lg); background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
-            <div class="filter-group" style="flex: 1; min-width: 150px;">
-                <label for="platform-filter" style="font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">Platform:</label>
-                <select id="platform-filter" style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 0.75rem; border-radius: 6px; font-family: var(--font-mono);">
-                    <option value="all">All</option>
-                    <option value="THM">TryHackMe</option>
-                    <option value="HTB">HackTheBox</option>
-                </select>
-            </div>
-            
             <div class="filter-group" style="flex: 1; min-width: 150px;">
                 <label for="difficulty-filter" style="font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">Difficulty:</label>
                 <select id="difficulty-filter" style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 0.75rem; border-radius: 6px; font-family: var(--font-mono);">
@@ -43,11 +32,10 @@ permalink: /browse/
 
         <!-- Write-ups Grid -->
         <div class="writeups-grid" id="writeups-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--spacing-lg);">
-            {% assign sorted_writeups = all_writeups | sort: 'date' | reverse %}
+            {% assign sorted_writeups = thm_writeups | sort: 'date' | reverse %}
             {% for writeup in sorted_writeups %}
             <a href="{{ writeup.url | relative_url }}" 
                class="writeup-card writeup-preview" 
-               data-platform="{{ writeup.platform | default: 'unknown' }}"
                data-difficulty="{{ writeup.difficulty | default: 'unknown' | downcase }}"
                data-tags="{{ writeup.tags | join: ',' | downcase }}"
                data-title="{{ writeup.title | default: writeup.name | remove: '.md' | downcase }}">
@@ -59,8 +47,7 @@ permalink: /browse/
                 </div>
                 
                 <div class="writeup-preview-meta">
-                    {% if writeup.platform %}{{ writeup.platform }}{% endif %}
-                    {% if writeup.date %} • {{ writeup.date | date: "%b %d, %Y" }}{% endif %}
+                    {% if writeup.date %}{{ writeup.date | date: "%b %d, %Y" }}{% endif %}
                 </div>
                 
                 {% if writeup.tags %}
@@ -82,7 +69,6 @@ permalink: /browse/
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const platformFilter = document.getElementById('platform-filter');
     const difficultyFilter = document.getElementById('difficulty-filter');
     const searchInput = document.getElementById('search-input');
     const writeupCards = document.querySelectorAll('.writeup-card');
@@ -90,25 +76,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const grid = document.getElementById('writeups-grid');
 
     function filterWriteups() {
-        const platform = platformFilter.value;
         const difficulty = difficultyFilter.value.toLowerCase();
         const search = searchInput.value.toLowerCase();
         
         let visibleCount = 0;
 
         writeupCards.forEach(card => {
-            const cardPlatform = card.dataset.platform;
             const cardDifficulty = card.dataset.difficulty;
             const cardTitle = card.dataset.title;
             const cardTags = card.dataset.tags;
 
-            const platformMatch = platform === 'all' || cardPlatform === platform;
             const difficultyMatch = difficulty === 'all' || cardDifficulty === difficulty;
             const searchMatch = search === '' || 
                                 cardTitle.includes(search) || 
                                 cardTags.includes(search);
 
-            if (platformMatch && difficultyMatch && searchMatch) {
+            if (difficultyMatch && searchMatch) {
                 card.style.display = '';
                 visibleCount++;
             } else {
@@ -125,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    platformFilter.addEventListener('change', filterWriteups);
     difficultyFilter.addEventListener('change', filterWriteups);
     searchInput.addEventListener('input', filterWriteups);
 });
