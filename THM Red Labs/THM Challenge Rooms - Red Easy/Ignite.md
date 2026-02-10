@@ -1,6 +1,10 @@
-
-
-
+---
+title: "Ignite"
+difficulty: Easy
+platform: THM
+tags: [Web Exploitation, Linux, RCE, CVE Exploitation, Privilege Escalation]
+date: 2026-02-08
+---
 
 > [!important]
 > Target ip: 10.66.139.221
