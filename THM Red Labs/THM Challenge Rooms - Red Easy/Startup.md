@@ -15,6 +15,8 @@ date: 2026-02-11
 
 > [!important]
 > Target IP: 10.64.145.68
+> 
+> What is the secret spicy soup recipe?
 
 > [!info]
 > Ok will run the usual scans of nmap/gobuster but will look to try Nikto which is a recent tool I learnt about so lets go!
@@ -244,4 +246,6 @@ _important.png.extracted/39: empty
 ![](Obsidian%20assets/DBZ%20next%20time.png)
 
 > [!info]
-> Anyways lets talk at 
+> Anyways I decided to cheat by looking at a hint which said:
+> FTP and HTTP. What could possibly go wrong?
+
