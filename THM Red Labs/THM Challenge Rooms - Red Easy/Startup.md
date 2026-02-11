@@ -241,3 +241,7 @@ _important.png.extracted/39: empty
 > [!note]
 > Yep was a dud....Need to see where else I can pivot...find out in the next episode of DBZ!
 
+![](Obsidian%20assets/DBZ%20next%20time.png)
+
+> [!info]
+> Anyways lets talk at 
