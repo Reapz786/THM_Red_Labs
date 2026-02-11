@@ -315,5 +315,7 @@ Nmap done: 1 IP address (1 host up) scanned in 19.42 seconds
 > Went back to basic enumeration with even more aggression from nmap to reveal the ftp server allows for anonymous login to explore another attack vector.
 
 > [!info]
-> If I can login as anonymous on ftp server then what can I find? Lets see
+> If I can login as anonymous on ftp server then what can I find? Lets see..
+
+
 
