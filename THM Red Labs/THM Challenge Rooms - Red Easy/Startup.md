@@ -181,7 +181,6 @@ zsteg -a important.png > zsteg_output.txt
 
 ```
 b5p,abgr,msb,xy     .. file: old packed data
-
 b6,r,lsb,xy         .. text: "YvYavZEw"
 b6p,r,lsb,xy        .. text: "````````yab`"
 b6p,rgb,lsb,xy      .. text: "````````````````ze`e`Z`p"
@@ -189,5 +188,11 @@ b6p,abgr,msb,xy     .. text: ["?" repeated 16 times]
 b7p,r,msb,xy        .. text: ["\r" repeated 8 times]
 b7p,rgb,msb,xy      .. text: "\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r="
 b7p,abgr,msb,xy     .. file: RDI Acoustic Doppler Current Profiler (ADCP)
+b1,r,lsb,XY         .. file: raw G3 (Group 3) FAX, byte-padded
+b2,r,lsb,XY         .. file: SoftQuad DESC or font file binary
+b2,r,msb,XY         .. file: VISX image file
+b2,g,lsb,XY         .. file: SoftQuad DESC or font file binary
+b2,g,msb,XY         .. file: VISX image file
+b2,b,lsb,XY         .. file: AIX core file fulldump
 
 ```
