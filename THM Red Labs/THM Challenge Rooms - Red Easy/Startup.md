@@ -194,5 +194,8 @@ b2,r,msb,XY         .. file: VISX image file
 b2,g,lsb,XY         .. file: SoftQuad DESC or font file binary
 b2,g,msb,XY         .. file: VISX image file
 b2,b,lsb,XY         .. file: AIX core file fulldump
+b2,abgr,lsb,XY      .. file: MIT scheme (library?)
+b3,rgba,lsb,XY      .. text: "'2s73s72s"
+b4,b,lsb,XY,prime   .. text: "lC33P54z"
 
 ```
