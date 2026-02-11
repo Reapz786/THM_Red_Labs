@@ -56,10 +56,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ===== Typing Effect (4 seconds) =====
+    // ===== Enhanced Typing Effect with Scroll Trigger =====
     function typeText(element, text, speed = 60) {
         let i = 0;
         element.textContent = '';
+        element.style.opacity = '1';
         
         function type() {
             if (i < text.length) {
@@ -72,10 +73,51 @@ document.addEventListener('DOMContentLoaded', function() {
         type();
     }
     
+    // Check if mobile (for scroll trigger)
+    const isMobile = window.innerWidth <= 1024;
+    
+    // Hero text (always types on load)
     const typeElement = document.querySelector('.type-effect');
     if (typeElement) {
         const text = typeElement.textContent;
         setTimeout(() => typeText(typeElement, text, 60), 800);
+    }
+    
+    // Section titles with typing
+    const typeOnScrollElements = document.querySelectorAll('.type-on-scroll');
+    
+    if (isMobile) {
+        // MOBILE: Type on scroll into view
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.typed) {
+                    const text = entry.target.textContent;
+                    const speed = parseInt(entry.target.dataset.typeSpeed) || 60;
+                    entry.target.dataset.typed = 'true';
+                    typeText(entry.target, text, speed);
+                }
+            });
+        }, {
+            threshold: 0.5,
+            rootMargin: '-50px'
+        });
+        
+        typeOnScrollElements.forEach(el => {
+            el.style.opacity = '0'; // Hide until typed
+            scrollObserver.observe(el);
+        });
+    } else {
+        // DESKTOP: Type all on page load (staggered)
+        typeOnScrollElements.forEach((el, index) => {
+            const text = el.textContent;
+            const speed = parseInt(el.dataset.typeSpeed) || 60;
+            el.style.opacity = '0'; // Hide initially
+            
+            // Stagger the typing animations
+            setTimeout(() => {
+                typeText(el, text, speed);
+            }, 1500 + (index * 800)); // Start after hero, 800ms between each
+        });
     }
     
     // ===== Smooth Scroll with Offset =====

@@ -175,7 +175,7 @@ title: Home
             <div class="hero-right">
                 <!-- Latest Write-ups -->
                 <div class="latest-writeups">
-                    <h2 class="section-title">Latest Write-ups</h2>
+                    <h2 class="section-title type-on-scroll" data-type-speed="40">Latest Write-ups</h2>
                     {% for writeup in sorted_writeups limit:3 %}
                     <a href="{{ writeup.url | relative_url }}" class="writeup-preview">
                         <div class="writeup-preview-header">
@@ -198,7 +198,7 @@ title: Home
                 
                 <!-- Certifications -->
                 <div class="certifications">
-                    <h2 class="section-title">Certifications</h2>
+                    <h2 class="section-title type-on-scroll" data-type-speed="40">Certifications</h2>
                     <div class="cert-grid">
                         <div class="cert-item">
                             <img src="{{ '/assets/images/comptia-security-plus.png' | relative_url }}" alt="CompTIA Security+" class="cert-badge">
@@ -219,7 +219,7 @@ title: Home
         
         <!-- Social Links Section (AT BOTTOM) -->
         <div class="contact-section" id="social">
-            <h2 class="section-title" style="text-align: center; margin-top: var(--spacing-2xl);">Connect</h2>
+            <h2 class="section-title type-on-scroll" data-type-speed="40" style="text-align: center; margin-top: var(--spacing-2xl);">Connect</h2>
             <div class="contact-links">
                 <!-- Correct order: LinkedIn, THM, Email, GitHub, HTB -->
                 <a href="{{ site.author.linkedin }}" target="_blank" class="contact-link">
