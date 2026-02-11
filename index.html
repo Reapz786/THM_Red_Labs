@@ -10,7 +10,10 @@ title: Home
             <div class="hero-left">
                 <!-- Hero Text -->
                 <h1 class="hero-name">EHSAN ALI</h1>
-                <p class="hero-tagline type-effect">I break systems and write about it. Decision makers: read the write-ups.</p>
+                <div class="hero-tagline">
+                    <span class="hero-tagline-line type-effect">I break systems and write about it.</span>
+                    <span class="hero-tagline-line">Here's the proof.</span>
+                </div>
                 
                 <!-- Expandable Stats -->
                 <div class="stats-section">
@@ -28,21 +31,15 @@ title: Home
                     {% assign unique_tags = all_tags | uniq %}
                     {% assign unique_tags_count = unique_tags.size %}
                     
-                    <!-- Calculate tool count dynamically -->
-                    {% assign tool_tags = "Nmap,Gobuster,Burp Suite,Metasploit,SQLMap,Netcat,Hydra,John,Hashcat,Wireshark,FFuf,Enum4linux,SMBClient,Nikto,WPScan,LinPEAS,WinPEAS" | split: ',' %}
-                    {% assign tools_used = 0 %}
-                    {% for tool in tool_tags %}
-                        {% assign found = false %}
-                        {% for page in all_writeups %}
-                            {% if page.tags contains tool %}
-                                {% assign found = true %}
-                                {% break %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if found %}
-                            {% assign tools_used = tools_used | plus: 1 %}
+                    <!-- Calculate tool count from frontmatter tools field -->
+                    {% assign all_tools = "" | split: "" %}
+                    {% for page in all_writeups %}
+                        {% if page.tools %}
+                            {% assign all_tools = all_tools | concat: page.tools %}
                         {% endif %}
                     {% endfor %}
+                    {% assign unique_tools = all_tools | uniq %}
+                    {% assign unique_tools_count = unique_tools.size %}
                     
                     <!-- Write-ups Stat -->
                     <div class="stat-expandable" data-stat-id="writeups">
@@ -132,11 +129,11 @@ title: Home
                         </div>
                     </div>
                     
-                    <!-- Tools Stat (DYNAMIC) -->
+                    <!-- Tools Stat (from frontmatter tools field) -->
                     <div class="stat-expandable" data-stat-id="tools">
                         <div class="stat-header">
                             <div class="stat-title">
-                                <span class="stat-number" data-target="{{ tools_used }}">0</span>
+                                <span class="stat-number" data-target="{{ unique_tools_count }}">0</span>
                                 <span>Tools Practiced</span>
                             </div>
                             <svg class="stat-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,11 +142,11 @@ title: Home
                         </div>
                         <div class="stat-content">
                             <div class="stat-content-inner">
-                                {% for tool in tool_tags limit:10 %}
+                                {% for tool in unique_tools limit:10 %}
                                     {% assign tool_count = 0 %}
                                     {% assign tool_writeups = "" | split: "" %}
                                     {% for page in all_writeups %}
-                                        {% if page.tags contains tool %}
+                                        {% if page.tools contains tool %}
                                             {% assign tool_count = tool_count | plus: 1 %}
                                             {% assign tool_writeups = tool_writeups | push: page %}
                                         {% endif %}

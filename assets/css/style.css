@@ -252,8 +252,13 @@ body::before {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     color: var(--text-secondary);
     margin-bottom: var(--spacing-xl);
-    line-height: 1.6;
-    min-height: 3em;
+    line-height: 1.8;
+    display: block;
+}
+
+.hero-tagline-line {
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 /* ===== Expandable Stats ===== */
@@ -448,7 +453,7 @@ body::before {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: var(--gradient-glow);
+    background: rgba(59, 130, 246, 0.3); /* ALL BLUE */
     transform: translate(-50%, -50%);
     transition: all var(--transition-medium);
 }
@@ -478,8 +483,7 @@ body::before {
 
 /* ===== Latest Write-ups (Right Side) ===== */
 .latest-writeups {
-    position: sticky;
-    top: 100px;
+    /* Removed position: sticky - let it scroll naturally with content */
 }
 
 .section-title {
