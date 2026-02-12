@@ -582,3 +582,6 @@ root@ip-10-67-86-193:~# wireshark sus.pcap
 > Followed the TCP stream which led to an interesting password reveal but not sure for what yet however did see previously a user called lennie so he might have the user.txt.
 
 ![](Obsidian%20assets/Lennie%20PW.png)
+> [!note]
+> From previous enumeration of the wireshark pcap, it was called suspicious because there was alreayd someone else who setup a reverse shell and seems like they didnt get far but we have a string that we can try with lennie.
+
