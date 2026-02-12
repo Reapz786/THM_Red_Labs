@@ -338,3 +338,6 @@ drwxrwxrwx    2 65534    65534        4096 Nov 12  2020 ftp
 
 > [!note]
 > OK, officially confused...I already have these files. Maybe I didn't enumerate the files before properly?
+
+> [!info]
+> Back
