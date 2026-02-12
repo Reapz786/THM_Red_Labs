@@ -367,3 +367,14 @@ Error                           : File format error
 root@ip-10-67-86-193:~# cat notice.txt 
 Whoever is leaving these damn Among Us memes in this share, it IS NOT FUNNY. People downloading documents from our website will think we are a joke! Now I dont know who it is, but Maya is looking pretty sus.
 ```
+ > [!note]
+>Tried to upload a test file to check if anonymous login allows me to upload files for RCE but denied!
+
+```
+ftp> lcd root
+Local directory now /root
+ftp> put test.txt
+local: test.txt remote: test.txt
+200 PORT command successful. Consider using PASV.
+553 Could not create file.
+```
