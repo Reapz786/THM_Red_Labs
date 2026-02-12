@@ -609,3 +609,48 @@ THM{03ce3d619b80ccbfb3b7fc81e46c0e79}
 > [!info]
 > We are in as lennie but what else can we explore to get PE?
 
+```
+lennie@startup:~$ ls
+ls
+Documents  scripts  user.txt
+lennie@startup:~$ cd sc	
+cd scripts/
+lennie@startup:~/scripts$ ls
+ls
+planner.sh  startup_list.txt
+lennie@startup:~/scripts$ cat start	
+cat startup_list.txt 
+lennie@startup:~/scripts$ ls -la
+ls -la
+total 16
+drwxr-xr-x 2 root   root   4096 Nov 12  2020 .
+drwx------ 4 lennie lennie 4096 Nov 12  2020 ..
+-rwxr-xr-x 1 root   root     77 Nov 12  2020 planner.sh
+-rw-r--r-- 1 root   root      1 Feb 12 19:44 startup_list.txt
+lennie@startup:~/scripts$ ./planner.sh
+./planner.sh
+./planner.sh: line 2: /home/lennie/scripts/startup_list.txt: Permission denied
+Done!
+lennie@startup:~/scripts$ cd ..
+cd ..
+lennie@startup:~$ ls
+ls
+Documents  scripts  user.txt
+lennie@startup:~$ cd Documents
+cd Documents
+lennie@startup:~/Documents$ ls
+ls
+concern.txt  list.txt  note.txt
+lennie@startup:~/Documents$ cat note.txt
+cat note.txt
+Reminders: Talk to Inclinant about our lacking security, hire a web developer, delete incident logs.
+lennie@startup:~/Documents$ cat concern.txt
+cat concern.txt
+I got banned from your library for moving the "C programming language" book into the horror section. Is there a way I can appeal? --Lennie
+lennie@startup:~/Documents$ cat list.txt
+cat list.txt
+Shoppinglist: Cyberpunk 2077 | Milk | Dog food
+```
+
+> [!note]
+> Lennie has some funny files....interesting too 
