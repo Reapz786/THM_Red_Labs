@@ -471,5 +471,7 @@ www-data
 ![](Obsidian%20assets/I'm%20in!.png)
 
 > [!note]
-> Anyway, time to enumerate and see what I can find...
+> Anyway, time to enumerate and see what I can find...for now lets upgrade shell
 
+```
+```
