@@ -474,4 +474,9 @@ www-data
 > Anyway, time to enumerate and see what I can find...for now lets upgrade shell
 
 ```
+$ python3 -c 'import pty;pty.spawn("/bin/bash")'    
+www-data@startup:/$ export TERM=xterm
+export TERM=xterm
+www-data@startup:/$ 
 ```
+
