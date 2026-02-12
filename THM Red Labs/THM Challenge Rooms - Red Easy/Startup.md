@@ -494,3 +494,11 @@ www-data@startup:/$ cat recipe.txt
 cat recipe.txt
 Someone asked what our main ingredient to our spice soup is today. I figured I can't keep it a secret forever and told him it was love.
 ```
+
+> [!important]
+>What are the contents of user.txt?
+
+> [!info]
+> Need to know what to look for. This is the part i struggle with but its all about enumeration.
+
+ls -la
