@@ -480,3 +480,17 @@ export TERM=xterm
 www-data@startup:/$ 
 ```
 
+> [!note]
+> Found what i'm looking for!
+
+```
+www-data@startup:/$ ls
+ls
+bin   home	      lib	  mnt	      root  srv  vagrant
+boot  incidents       lib64	  opt	      run   sys  var
+dev   initrd.img      lost+found  proc	      sbin  tmp  vmlinuz
+etc   initrd.img.old  media	  recipe.txt  snap  usr  vmlinuz.old
+www-data@startup:/$ cat recipe.txt
+cat recipe.txt
+Someone asked what our main ingredient to our spice soup is today. I figured I can't keep it a secret forever and told him it was love.
+```
