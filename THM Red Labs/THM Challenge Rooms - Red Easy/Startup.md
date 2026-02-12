@@ -360,3 +360,5 @@ File Permissions                : rw-r--r--
 Error                           : File format error
 ```
 
+> [!note]
+> Decided to read note.txt and saw two key info - people downloading files from website and a username called Maya
