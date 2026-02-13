@@ -1,0 +1,73 @@
+# Site Configuration
+title: "Ehsan Ali - Security Research Portfolio"
+description: "Offensive security portfolio documenting penetration testing work"
+url: "https://reapz786.github.io"
+baseurl: "/Red_Labs"
+
+# Author Information
+author:
+  name: "Ehsan Ali"
+  github: "Reapz786"
+  email: "ehsan.ali786@outlook.com"
+  linkedin: "https://www.linkedin.com/in/ehsan-ali-469ab5152"
+  tryhackme: "https://tryhackme.com/p/EAli"
+  hackthebox: "https://profile.hackthebox.com/profile/019c45c6-cd43-7168-9403-cbb98be6366a"
+
+# Build Settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: bash
+    css_class: 'highlight'
+
+# CRITICAL: Include all write-up directories and assets
+include:
+  - "THM Red Labs"
+  - "HTB Red Labs"
+  - "_*"
+  - "assets"
+
+# CRITICAL: Keep all assets folders during build
+keep_files:
+  - "THM Red Labs"
+  - "HTB Red Labs"
+  - assets
+
+# Defaults for write-ups
+defaults:
+  - scope:
+      path: "THM Red Labs"
+    values:
+      layout: "writeup"
+      platform: "THM"
+  - scope:
+      path: "HTB Red Labs"
+    values:
+      layout: "writeup"
+      platform: "HTB"
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .gitignore
+  - DEPLOYMENT_GUIDE.md
+  - IMAGE_FIX_GUIDE.md
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Timezone
+timezone: Europe/London
+
+# Static files configuration - copy ALL assets folders
+static_files:
+  - assets

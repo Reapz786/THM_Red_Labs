@@ -1,0 +1,281 @@
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <!-- Left Column: Hero + Stats -->
+            <div class="hero-left">
+                <!-- Hero Text with Profile Photo -->
+                <div class="hero-header-with-photo">
+                    <div class="hero-text-section">
+                        <h1 class="hero-name">EHSAN ALI</h1>
+                        <div class="hero-tagline-wrapper">
+                            <p class="hero-tagline-main type-line-1" data-text="I break systems and document everything."></p>
+                            <p class="hero-tagline-sub type-line-2" data-text="Security+ Certified Penetration Tester"></p>
+                        </div>
+                    </div>
+                    <div class="hero-photo">
+                        <img src="{{ '/assets/images/profile-photo.jpg' | relative_url }}" alt="Ehsan Ali" class="profile-image">
+                    </div>
+                </div>
+                
+                <!-- Seeking Roles Line -->
+                <div class="seeking-line">
+                    <span class="seeking-arrow">→</span>
+                    <span class="seeking-text">Seeking: Penetration Tester | Red Team Operator | Ethical Hacker</span>
+                </div>
+                
+                <!-- Download Resume Button -->
+                <div class="resume-cta">
+                    <a href="{{ '/assets/resume/EhsanCVSite.pdf' | relative_url }}" download class="download-resume-btn">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span>DOWNLOAD RESUME/CV</span>
+                    </a>
+                </div>
+                
+                <!-- Expandable Stats -->
+                <div class="stats-section">
+                    {% assign thm_pages = site.pages | where_exp: "page", "page.path contains 'THM Red Labs'" | where_exp: "page", "page.path contains '.md'" | where_exp: "page", "page.name != 'index.md'" %}
+                    {% assign htb_pages = site.pages | where_exp: "page", "page.path contains 'HTB Red Labs'" | where_exp: "page", "page.path contains '.md'" | where_exp: "page", "page.name != 'index.md'" %}
+                    {% assign all_writeups = thm_pages | concat: htb_pages %}
+                    {% assign total_writeups = all_writeups.size %}
+                    
+                    {% assign all_tags = "" | split: "" %}
+                    {% for page in all_writeups %}
+                        {% if page.tags %}
+                            {% assign all_tags = all_tags | concat: page.tags %}
+                        {% endif %}
+                    {% endfor %}
+                    {% assign unique_tags = all_tags | uniq %}
+                    {% assign unique_tags_count = unique_tags.size %}
+                    
+                    <!-- Calculate tool count from frontmatter tools field -->
+                    {% assign all_tools = "" | split: "" %}
+                    {% for page in all_writeups %}
+                        {% if page.tools %}
+                            {% assign all_tools = all_tools | concat: page.tools %}
+                        {% endif %}
+                    {% endfor %}
+                    {% assign unique_tools = all_tools | uniq %}
+                    {% assign unique_tools_count = unique_tools.size %}
+                    
+                    <!-- Write-ups Stat -->
+                    <div class="stat-expandable" data-stat-id="writeups">
+                        <div class="stat-header">
+                            <div class="stat-title">
+                                <span class="stat-number" data-target="{{ total_writeups }}">0</span>
+                                <span>Write-ups Completed</span>
+                            </div>
+                            <svg class="stat-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-content-inner">
+                                {% assign sorted_writeups = all_writeups | sort: 'date' | reverse %}
+                                {% for writeup in sorted_writeups limit:3 %}
+                                <div class="stat-item">
+                                    <div class="stat-item-left">
+                                        <span>{{ writeup.title | default: writeup.name | remove: '.md' }}</span>
+                                        {% if writeup.difficulty %}
+                                        <span class="badge badge-{{ writeup.difficulty | downcase }}">{{ writeup.difficulty }}</span>
+                                        {% endif %}
+                                    </div>
+                                    <div class="stat-item-right">
+                                        <a href="{{ writeup.url | relative_url }}" class="room-link">View →</a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% if total_writeups > 3 %}
+                                <div style="text-align: center; margin-top: 1rem;">
+                                    <a href="{{ '/browse' | relative_url }}" class="room-link">View All {{ total_writeups }} →</a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Techniques Stat -->
+                    <div class="stat-expandable" data-stat-id="techniques">
+                        <div class="stat-header">
+                            <div class="stat-title">
+                                <span class="stat-number" data-target="{{ unique_tags_count }}">0</span>
+                                <span>Techniques Used</span>
+                            </div>
+                            <svg class="stat-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-content-inner">
+                                {% assign tag_counts = '' | split: '' %}
+                                {% for tag in unique_tags %}
+                                    {% assign count = 0 %}
+                                    {% assign tag_writeups = "" | split: "" %}
+                                    {% for page in all_writeups %}
+                                        {% if page.tags contains tag %}
+                                            {% assign count = count | plus: 1 %}
+                                            {% assign tag_writeups = tag_writeups | push: page %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if count > 0 %}
+                                        {% capture tag_data %}{{ count }}|{{ tag }}{% endcapture %}
+                                        {% assign tag_counts = tag_counts | push: tag_data %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% assign sorted_tags = tag_counts | sort | reverse %}
+                                
+                                {% for tag_data in sorted_tags limit:5 %}
+                                    {% assign parts = tag_data | split: '|' %}
+                                    {% assign tag_count = parts[0] %}
+                                    {% assign tag_name = parts[1] %}
+                                    <div class="stat-item">
+                                        <div class="stat-item-left">
+                                            <span>{{ tag_name }}</span>
+                                            <span style="color: var(--text-muted); font-size: 0.85rem;">x {{ tag_count }}</span>
+                                        </div>
+                                        <div class="stat-item-right">
+                                            {% for page in all_writeups limit:3 %}
+                                                {% if page.tags contains tag_name %}
+                                                <a href="{{ page.url | relative_url }}" class="room-link">{{ page.title | default: page.name | remove: '.md' | truncate: 15 }}</a>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools Stat (from frontmatter tools field) -->
+                    <div class="stat-expandable" data-stat-id="tools">
+                        <div class="stat-header">
+                            <div class="stat-title">
+                                <span class="stat-number" data-target="{{ unique_tools_count }}">0</span>
+                                <span>Tools Practiced</span>
+                            </div>
+                            <svg class="stat-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-content-inner">
+                                {% for tool in unique_tools limit:10 %}
+                                    {% assign tool_count = 0 %}
+                                    {% assign tool_writeups = "" | split: "" %}
+                                    {% for page in all_writeups %}
+                                        {% if page.tools contains tool %}
+                                            {% assign tool_count = tool_count | plus: 1 %}
+                                            {% assign tool_writeups = tool_writeups | push: page %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if tool_count > 0 %}
+                                    <div class="stat-item">
+                                        <div class="stat-item-left">
+                                            <span>{{ tool }}</span>
+                                            <span style="color: var(--text-muted); font-size: 0.85rem;">x {{ tool_count }}</span>
+                                        </div>
+                                        <div class="stat-item-right">
+                                            {% for writeup in tool_writeups limit:3 %}
+                                            <a href="{{ writeup.url | relative_url }}" class="room-link">{{ writeup.title | default: writeup.name | remove: '.md' | truncate: 15 }}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column: Latest Write-ups + Certs -->
+            <div class="hero-right">
+                <!-- Latest Write-ups -->
+                <div class="latest-writeups">
+                    <h2 class="section-title type-on-scroll" data-type-speed="40">Latest Write-ups</h2>
+                    {% for writeup in sorted_writeups limit:3 %}
+                    <a href="{{ writeup.url | relative_url }}" class="writeup-preview">
+                        <div class="writeup-preview-header">
+                            <h3 class="writeup-preview-title">{{ writeup.title | default: writeup.name | remove: '.md' }}</h3>
+                            {% if writeup.difficulty %}
+                            <span class="badge badge-{{ writeup.difficulty | downcase }}">{{ writeup.difficulty }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="writeup-preview-meta">
+                            {% if writeup.platform %}{{ writeup.platform }}{% endif %}
+                            {% if writeup.date %} • {{ writeup.date | date: "%b %d, %Y" }}{% endif %}
+                        </div>
+                    </a>
+                    {% endfor %}
+                    
+                    <div style="text-align: center; margin-top: var(--spacing-lg);">
+                        <a href="{{ '/browse' | relative_url }}" class="cta-button">View All Write-ups</a>
+                    </div>
+                </div>
+                
+                <!-- Certifications -->
+                <div class="certifications">
+                    <h2 class="section-title type-on-scroll" data-type-speed="40">Certifications</h2>
+                    <div class="cert-grid">
+                        <div class="cert-item">
+                            <img src="{{ '/assets/images/comptia-security-plus.png' | relative_url }}" alt="CompTIA Security+" class="cert-badge">
+                            <p class="cert-name">CompTIA Security+</p>
+                        </div>
+                        <div class="cert-item">
+                            <img src="{{ '/assets/images/google-cybersecurity.png' | relative_url }}" alt="Google Cybersecurity" class="cert-badge">
+                            <p class="cert-name">Google Cybersecurity</p>
+                        </div>
+                        <div class="cert-item">
+                            <img src="{{ '/assets/images/thm-jr-pentester.png' | relative_url }}" alt="THM Jr Penetration Tester" class="cert-badge">
+                            <p class="cert-name">Jr Penetration Tester</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Links Section (AT BOTTOM) -->
+        <div class="contact-section" id="social">
+            <h2 class="section-title type-on-scroll" data-type-speed="40" style="text-align: center; margin-top: var(--spacing-2xl);">Connect</h2>
+            <div class="contact-links">
+                <!-- Correct order: LinkedIn, THM, Email, GitHub, HTB -->
+                <a href="{{ site.author.linkedin }}" target="_blank" class="contact-link">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="{{ site.author.tryhackme }}" target="_blank" class="contact-link">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10.705 0C7.54 0 4.902 2.285 4.349 5.291a4.525 4.525 0 0 0-4.107 4.5a4.525 4.525 0 0 0 4.52 4.52h6.761a.625.625 0 1 0 0-1.25H4.761a3.273 3.273 0 0 1-3.27-3.27 3.273 3.273 0 0 1 3.27-3.27c.156 0 .31.011.464.033a.625.625 0 0 0 .65-.422C6.43 3.394 8.399 1.25 10.705 1.25c2.743 0 4.972 2.229 4.972 4.97a.625.625 0 0 0 1.25 0c0-3.43-2.792-6.22-6.222-6.22zm10.088 6.854c-.065 0-.13.007-.195.023a4.972 4.972 0 0 0-4.777-3.627.625.625 0 1 0 0 1.25 3.721 3.721 0 0 1 3.722 3.72c0 .346-.281.626-.625.626h-6.365a.625.625 0 1 0 0 1.25h6.365c1.035 0 1.875-.84 1.875-1.876 0-.215-.037-.421-.103-.616a1.557 1.557 0 0 1 .103-.003c.86 0 1.56.7 1.56 1.56v8.09c0 .86-.7 1.56-1.56 1.56H4.521c-.86 0-1.56-.7-1.56-1.56v-2.653a.625.625 0 1 0-1.25 0v2.653c0 1.55 1.26 2.81 2.81 2.81h16.272c1.55 0 2.81-1.26 2.81-2.81v-8.09c0-1.55-1.26-2.81-2.81-2.81z"/>
+                    </svg>
+                    <span>TryHackMe</span>
+                </a>
+                <a href="mailto:{{ site.author.email }}" class="contact-link">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                    </svg>
+                    <span>Email</span>
+                </a>
+                <a href="https://github.com/{{ site.author.github }}" target="_blank" class="contact-link">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="{{ site.author.hackthebox }}" target="_blank" class="contact-link">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M11.996 0a1.119 1.119 0 0 0-.057.002.772.772 0 0 0-.128.023l-8.266 4.413a1.043 1.043 0 0 0-.534.938v9.248a1.043 1.043 0 0 0 .534.938l8.266 4.412a1.043 1.043 0 0 0 1.068 0l8.266-4.412a1.043 1.043 0 0 0 .534-.938V5.376a1.043 1.043 0 0 0-.534-.938L13.013.025a.772.772 0 0 0-.128-.023 1.119 1.119 0 0 0-.889.002zm-.002 1.676L20.38 5.89l-3.401 1.814-8.388-4.228zm-8.383 4.214l8.383 4.229v8.838l-8.383-4.48zm9.772 0v8.838l8.383 4.48V10.37z"/>
+                    </svg>
+                    <span>HackTheBox</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

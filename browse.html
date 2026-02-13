@@ -1,0 +1,132 @@
+---
+layout: default
+title: All Write-ups
+permalink: /browse/
+---
+
+<section class="writeups-section" style="padding: 3rem 0;">
+    <div class="container">
+        <header class="browse-header" style="text-align: center; margin-bottom: var(--spacing-xl);">
+            <h1 style="font-size: 2.5rem; margin-bottom: var(--spacing-sm);">All Write-ups</h1>
+            {% assign thm_writeups = site.pages | where_exp: "page", "page.path contains 'THM Red Labs'" | where_exp: "page", "page.path contains '.md'" | where_exp: "page", "page.name != 'index.md'" %}
+            {% assign htb_writeups = site.pages | where_exp: "page", "page.path contains 'HTB Red Labs'" | where_exp: "page", "page.path contains '.md'" | where_exp: "page", "page.name != 'index.md'" %}
+            {% assign all_writeups = thm_writeups | concat: htb_writeups %}
+            <p style="color: var(--text-secondary); font-size: 1.125rem;">{{ all_writeups.size }} total ({{ thm_writeups.size }} THM + {{ htb_writeups.size }} HTB)</p>
+        </header>
+
+        <!-- Filters -->
+        <div class="filters" style="display: flex; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-xl); padding: var(--spacing-lg); background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+            <div class="filter-group" style="flex: 1; min-width: 150px;">
+                <label for="platform-filter" style="font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">Platform:</label>
+                <select id="platform-filter" style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 0.75rem; border-radius: 6px; font-family: var(--font-mono);">
+                    <option value="all">All</option>
+                    <option value="THM">TryHackMe</option>
+                    <option value="HTB">HackTheBox</option>
+                </select>
+            </div>
+            
+            <div class="filter-group" style="flex: 1; min-width: 150px;">
+                <label for="difficulty-filter" style="font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">Difficulty:</label>
+                <select id="difficulty-filter" style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 0.75rem; border-radius: 6px; font-family: var(--font-mono);">
+                    <option value="all">All</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            
+            <div class="filter-group" style="flex: 2; min-width: 200px;">
+                <label for="search-input" style="font-size: 0.875rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">Search:</label>
+                <input type="text" id="search-input" placeholder="Search write-ups..." style="width: 100%; background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-primary); padding: 0.75rem; border-radius: 6px; font-family: var(--font-mono);">
+            </div>
+        </div>
+
+        <!-- Write-ups Grid -->
+        <div class="writeups-grid" id="writeups-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--spacing-lg);">
+            {% assign sorted_writeups = all_writeups | sort: 'date' | reverse %}
+            {% for writeup in sorted_writeups %}
+            <a href="{{ writeup.url | relative_url }}" 
+               class="writeup-card writeup-preview" 
+               data-platform="{{ writeup.platform | default: 'unknown' }}"
+               data-difficulty="{{ writeup.difficulty | default: 'unknown' | downcase }}"
+               data-tags="{{ writeup.tags | join: ',' | downcase }}"
+               data-title="{{ writeup.title | default: writeup.name | remove: '.md' | downcase }}">
+                <div class="writeup-preview-header">
+                    <h3 class="writeup-preview-title">{{ writeup.title | default: writeup.name | remove: '.md' }}</h3>
+                    {% if writeup.difficulty %}
+                    <span class="badge badge-{{ writeup.difficulty | downcase }}">{{ writeup.difficulty }}</span>
+                    {% endif %}
+                </div>
+                
+                <div class="writeup-preview-meta">
+                    {% if writeup.platform %}{{ writeup.platform }}{% endif %}
+                    {% if writeup.date %} • {{ writeup.date | date: "%b %d, %Y" }}{% endif %}
+                </div>
+                
+                {% if writeup.tags %}
+                <div class="writeup-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: var(--spacing-sm);">
+                    {% for tag in writeup.tags limit:5 %}
+                    <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-primary); font-size: 0.75rem; padding: 0.25rem 0.75rem; border: 1px solid var(--border-accent);">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </a>
+            {% endfor %}
+        </div>
+
+        <div id="no-results" style="display: none; text-align: center; padding: 3rem; color: var(--text-muted);">
+            <p>No write-ups found matching your filters.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const platformFilter = document.getElementById('platform-filter');
+    const difficultyFilter = document.getElementById('difficulty-filter');
+    const searchInput = document.getElementById('search-input');
+    const writeupCards = document.querySelectorAll('.writeup-card');
+    const noResults = document.getElementById('no-results');
+    const grid = document.getElementById('writeups-grid');
+
+    function filterWriteups() {
+        const platform = platformFilter.value;
+        const difficulty = difficultyFilter.value.toLowerCase();
+        const search = searchInput.value.toLowerCase();
+        
+        let visibleCount = 0;
+
+        writeupCards.forEach(card => {
+            const cardPlatform = card.dataset.platform;
+            const cardDifficulty = card.dataset.difficulty;
+            const cardTitle = card.dataset.title;
+            const cardTags = card.dataset.tags;
+
+            const platformMatch = platform === 'all' || cardPlatform === platform;
+            const difficultyMatch = difficulty === 'all' || cardDifficulty === difficulty;
+            const searchMatch = search === '' || 
+                                cardTitle.includes(search) || 
+                                cardTags.includes(search);
+
+            if (platformMatch && difficultyMatch && searchMatch) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (visibleCount === 0) {
+            grid.style.display = 'none';
+            noResults.style.display = 'block';
+        } else {
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+        }
+    }
+
+    platformFilter.addEventListener('change', filterWriteups);
+    difficultyFilter.addEventListener('change', filterWriteups);
+    searchInput.addEventListener('input', filterWriteups);
+});
+</script>
