@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Track if counters have already animated (PREVENT RESET)
     const animatedCounters = new Set();
     
-    // ===== Very Slow Counter Animation (5 seconds) =====
-    function animateCounter(element, target, duration = 5000) {
+    // ===== Faster Counter Animation (3.5 seconds) =====
+    function animateCounter(element, target, duration = 3500) {
         const start = 0;
         const increment = target / (duration / 16);
         let current = start;
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!animatedCounters.has(counterId)) {
                 setTimeout(() => {
-                    animateCounter(number, target, 5000);
+                    animateCounter(number, target, 3500);
                     animatedCounters.add(counterId);
                 }, 1000 + (index * 500));
             }
@@ -56,8 +56,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // ===== Enhanced Typing Effect with Sequential and Scroll Trigger =====
-    function typeText(element, text, speed = 60, callback) {
+    // ===== Randomized Glitch Effect on Hero Name =====
+    const heroName = document.querySelector('.hero-name');
+    
+    function randomGlitch() {
+        if (heroName) {
+            heroName.classList.add('glitch');
+            setTimeout(() => {
+                heroName.classList.remove('glitch');
+            }, 200); // Glitch lasts 200ms
+            
+            // Random interval between 1-4 seconds
+            const randomDelay = Math.random() * 3000 + 1000; // 1000-4000ms
+            setTimeout(randomGlitch, randomDelay);
+        }
+    }
+    
+    // Start glitch effect after page loads
+    setTimeout(randomGlitch, 2000); // First glitch after 2s
+    
+    // ===== Enhanced Typing Effect (FASTER: 40ms per char) =====
+    function typeText(element, text, speed = 40, callback) {
         let i = 0;
         element.textContent = '';
         element.classList.add('typing');
@@ -79,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if mobile (for scroll trigger)
     const isMobile = window.innerWidth <= 1024;
     
-    // ===== Hero text typing (BOTH LINES) =====
+    // ===== Hero text typing (BOTH LINES - FASTER) =====
     const typeLine1 = document.querySelector('.type-line-1');
     const typeLine2 = document.querySelector('.type-line-2');
     
@@ -87,13 +106,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const text1 = typeLine1.dataset.text || typeLine1.textContent.trim();
         const text2 = typeLine2.dataset.text || typeLine2.textContent.trim();
         
-        // Type first line, then second line after it completes
+        // Type first line, then second line after it completes (40ms per char = faster)
         setTimeout(() => {
-            typeText(typeLine1, text1, 60, () => {
+            typeText(typeLine1, text1, 40, () => {
                 // After first line completes, type second line
                 setTimeout(() => {
-                    typeText(typeLine2, text2, 60);
-                }, 300);
+                    typeText(typeLine2, text2, 40);
+                }, 250); // Shorter pause
             });
         }, 800);
     }
@@ -107,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !entry.target.dataset.typed) {
                     const text = entry.target.textContent;
-                    const speed = parseInt(entry.target.dataset.typeSpeed) || 40;
+                    const speed = parseInt(entry.target.dataset.typeSpeed) || 35; // Faster
                     entry.target.dataset.typed = 'true';
                     typeText(entry.target, text, speed);
                 }
@@ -125,13 +144,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // DESKTOP: Type all on page load (staggered)
         typeOnScrollElements.forEach((el, index) => {
             const text = el.textContent;
-            const speed = parseInt(el.dataset.typeSpeed) || 40;
+            const speed = parseInt(el.dataset.typeSpeed) || 35; // Faster
             el.style.opacity = '0';
             
             // Stagger the typing animations
             setTimeout(() => {
                 typeText(el, text, speed);
-            }, 3000 + (index * 1000));
+            }, 2800 + (index * 900)); // Start sooner, faster intervals
         });
     }
     
