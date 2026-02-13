@@ -241,30 +241,135 @@ body::before {
 .hero-name {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 700;
-    margin-bottom: var(--spacing-lg);
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 1.1;
+    margin: 0;
+    flex: 1;
 }
 
-.hero-tagline {
-    font-size: clamp(1rem, 2.5vw, 1.35rem);
-    color: var(--text-secondary);
+/* Hero Header with Terminal Icon */
+.hero-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: var(--spacing-xl);
+    gap: var(--spacing-lg);
+}
+
+.terminal-icon {
+    flex-shrink: 0;
+}
+
+.terminal-svg {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+    animation: terminalPulse 3s ease-in-out infinite;
+}
+
+@keyframes terminalPulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.6));
+        transform: scale(1.05);
+    }
+}
+
+.cursor-blink {
+    animation: blink 1.5s step-end infinite;
+}
+
+/* Hero Tagline Wrapper - Centered */
+.hero-tagline-wrapper {
+    margin-bottom: var(--spacing-2xl);
+    text-align: center;
+}
+
+.hero-tagline-center {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--text-secondary);
     line-height: 1.8;
-    display: block;
+    margin-bottom: 0.75rem;
+    opacity: 0;
+}
+
+.hero-tagline-center.typing {
+    opacity: 1;
+}
+
+/* Download Resume Button */
+.resume-cta {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.download-resume-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-accent);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.download-resume-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: var(--gradient-glow);
+    transform: translate(-50%, -50%);
+    transition: all 0.6s;
+}
+
+.download-resume-btn:hover::before {
+    width: 500px;
+    height: 500px;
+}
+
+.download-resume-btn:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 40px var(--accent-glow);
+    transform: translateY(-3px);
+}
+
+.download-resume-btn svg {
+    position: relative;
+    z-index: 1;
+}
+
+.download-resume-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Old hero styles - remove */
+.hero-tagline {
+    display: none;
 }
 
 .hero-tagline-line {
-    display: block;
-    margin-bottom: 0.75rem;
-    opacity: 0; /* Hidden until typing starts */
-}
-
-.hero-tagline-line.typing {
-    opacity: 1; /* Visible when typing */
+    display: none;
 }
 
 /* ===== Expandable Stats ===== */
@@ -879,6 +984,27 @@ body::before {
     .nav-links a {
         padding: 0.5rem 0.75rem;
         font-size: 0.85rem;
+    }
+    
+    /* Hero adjustments for mobile */
+    .hero-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .hero-name {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    
+    .terminal-svg {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .download-resume-btn {
+        font-size: 1rem;
+        padding: 1.25rem 1.5rem;
     }
 }
 

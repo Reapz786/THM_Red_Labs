@@ -653,4 +653,5 @@ Shoppinglist: Cyberpunk 2077 | Milk | Dog food
 ```
 
 > [!note]
-> Lennie has some funny files....interesting too 
+> Lennie has some funny files....interesting too.
+
