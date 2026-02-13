@@ -655,3 +655,16 @@ Shoppinglist: Cyberpunk 2077 | Milk | Dog food
 > [!note]
 > Lennie has some funny files....interesting too.
 
+> [!note]
+> Managed to find scripts folder which using ls -la allowed me to see it is readable but not writeable unless root and is part of a cron job.
+
+```
+lennie@startup:~/scripts$ cat ./planner.sh 
+#!/bin/bash
+echo $LIST > /home/lennie/scripts/startup_list.txt
+/etc/print.sh
+lennie@startup:~/scripts$ 
+```
+
+> [!note]
+> This led me to find the print.sh 
