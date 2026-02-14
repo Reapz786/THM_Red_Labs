@@ -285,17 +285,25 @@ hydra -L /usr/share/seclists/Usernames/Names/names.txt -p password123 lookup.thm
 
 ```
 ┌──(kali㉿kali)-[~]
-└─$ searchsploit Elfinder            
------------------------------------------- ---------------------------------
- Exploit Title                            |  Path
------------------------------------------- ---------------------------------
-elFinder 2 - Remote Command Execution (vi | php/webapps/36925.py
-elFinder 2.1.47 - 'PHP connector' Command | php/webapps/46481.py
-elFinder PHP Connector < 2.1.48 - 'exiftr | php/remote/46539.rb
-elFinder Web file manager Version - 2.1.5 | php/webapps/51864.txt
------------------------------------------- ---------------------------------
+└─$ searchsploit Elfinder
+-------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                            |  Path
+-------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+elFinder 2 - Remote Command Execution (via File Creation)                                                                 | php/webapps/36925.py
+elFinder 2.1.47 - 'PHP connector' Command Injection                                                                       | php/webapps/46481.py
+elFinder PHP Connector < 2.1.48 - 'exiftran' Command Injection (Metasploit)                                               | php/remote/46539.rb
+elFinder Web file manager Version - 2.1.53 Remote Command Execution                                                       | php/webapps/51864.txt
+-------------------------------------------------------------------------------------------------------------------------- ---------------------------------
 Shellcodes: No Results
+
 ```
+
+> [!note]
+> So looking for Elfinder in searchsploit found me a RCE & CMD injection vulns (dependent on version of elFinder)
+
+![](Obsidian%20assets/elFinder%20version.png)
+
+
 
 
 
