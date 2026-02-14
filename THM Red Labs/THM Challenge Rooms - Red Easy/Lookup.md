@@ -405,4 +405,21 @@ meterpreter >
 > [!note]
 > Spawned shell from meterpreter to use su cmd but upgraded shell then tried to change into think using su but the password was wrong?
 
-``
+```
+www-data@ip-10-66-172-224:/home/think$ su think
+su think
+Password:  nopassword
+
+su: Authentication failure
+www-data@ip-10-66-172-224:/home/think$ su think
+su think
+Password: 
+
+su: Authentication failure
+www-data@ip-10-66-172-224:/home/think$ su think
+su think
+Password: nopassword
+
+su: Authentication failure
+www-data@ip-10-66-172-224:/home/think$ 
+```
