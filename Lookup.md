@@ -212,7 +212,27 @@ gobuster vhost -u http://lookup.thm -w /usr/share/wordlists/seclists/Discovery/D
 > Unfortunately nothing came out of it...
 
 ```
-
+┌──(kali㉿kali)-[/]
+└─$ gobuster vhost -u http://lookup.thm -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain
+===============================================================
+Gobuster v3.8
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                       http://lookup.thm
+[+] Method:                    GET
+[+] Threads:                   10
+[+] Wordlist:                  /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+[+] User Agent:                gobuster/3.8
+[+] Timeout:                   10s
+[+] Append Domain:             true
+[+] Exclude Hostname Length:   false
+===============================================================
+Starting gobuster in VHOST enumeration mode
+===============================================================
+Progress: 4989 / 4989 (100.00%)
+===============================================================
+Finished
+===============================================================
 ```
 
 
