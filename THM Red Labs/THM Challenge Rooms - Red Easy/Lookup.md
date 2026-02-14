@@ -260,5 +260,9 @@ hydra -L /usr/share/seclists/Usernames/Names/names.txt -p password123 lookup.thm
 > [!note]
 > Weird how that worked, admin login error messages gave away the password but somehow it gives the password instead of username first so first time i enumerated a username.
 
+![](Obsidian%20assets/files.Lookup.htm.png)
 
+> [!info]
+> logged in and found a subdomain but whats going on here?
+ 
 
