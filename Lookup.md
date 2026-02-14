@@ -191,5 +191,9 @@ Address:        192.168.50.120#53
 > Nothing useful but instead of looking online, I saw my notes that gobuster has a way to scan domains & subdomains.
 
 ```
-
+gobuster dns -do lookup.thm -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt
 ```
+
+> [!note]
+> Upon realising, you cannot check the subdomains like this if DNS port 53 is closed which it is.
+
