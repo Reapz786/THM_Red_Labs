@@ -199,16 +199,20 @@ gobuster dns -do lookup.thm -w /usr/share/seclists/Discovery/DNS/subdomains-top1
 > I pivoted to looking into Vhosts
 
 ```
-gobuster vhost -u http://lookup.thm -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-20000.txt 
+gobuster vhost -u http://lookup.thm -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-20000.txt --append-domain
 ```
 ```
-gobuster vhost -u http://lookup.thm -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-110000.txt
+gobuster vhost -u http://lookup.thm -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain
 ```
 ```
-gobuster vhost -u http://lookup.thm -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+gobuster vhost -u http://lookup.thm -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain
 ```
 
 > [!note]
-> Unfortunately all showed status code 400.
+> Unfortunately nothing came out of it...
+
+```
+
+```
 
 
