@@ -247,6 +247,10 @@ Finished
 > [!note]
 > This tells me username admin exists but we need password. Firstly how many different/common usernames are there and can we try burp suite for password cracking?
 
+> [!note]
+> Looking online showed me two ways using hydra or burp suite so can use either so lets try Hydra for now:
+
+
 
 
 
