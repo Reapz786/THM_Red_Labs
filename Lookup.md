@@ -101,3 +101,29 @@ Finished
 > [!note]
 > Ok so before posting Nikto results, let's review the above - first with nmap - 2 ports only open SSH & HTTP - gobuster is not revealing any hidden directories - the login page indicates there is an exploit there possibly? burp suite can help? not sure again what im looking for but its about web enumeration for now im assuming...Anyway Nikot results below didnt reveal much.
 
+```
+┌──(kali㉿kali)-[~]
+└─$ nikto -h http://lookup.thm/
+- Nikto v2.5.0
+---------------------------------------------------------------------------
++ Target IP:          10.66.172.224
++ Target Hostname:    lookup.thm
++ Target Port:        80
++ Start Time:         2026-02-14 09:03:21 (GMT-5)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.41 (Ubuntu)
++ /: The anti-clickjacking X-Frame-Options header is not present. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
++ /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Apache/2.4.41 appears to be outdated (current is at least Apache/2.4.54). Apache 2.2.34 is the EOL for the 2.x branch.
++ /: Web Server returns a valid response with junk HTTP methods which may cause false positives.
++ 534 requests: 0 error(s) and 4 item(s) reported on remote host
++ End Time:           2026-02-14 09:04:09 (GMT-5) (48 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+```
+
+> [!info]
+> I'm going to use dig cmd and nslookup for sub-domains as that was mentioned in the first paragraph section about Lookup.
+
