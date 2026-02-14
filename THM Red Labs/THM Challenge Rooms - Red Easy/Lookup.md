@@ -264,5 +264,8 @@ hydra -L /usr/share/seclists/Usernames/Names/names.txt -p password123 lookup.thm
 
 > [!info]
 > logged in and found a subdomain but whats going on here?
- 
+ >
+> Upon checking, this needed to be added to the /etc/hosts file
+
+
 
