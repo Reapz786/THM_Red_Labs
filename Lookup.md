@@ -19,3 +19,80 @@ date: 2026-02-14
 > [!important]
 > Target IP: 10.66.172.224
 
+> [!info]
+> First things first, enumeration! Gobuster, Nikto, Nmap, web exploits.
+
+```
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap 10.66.172.224 -O -A -sV -sC
+[sudo] password for kali: 
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-02-14 08:36 EST
+Nmap scan report for 10.66.172.224
+Host is up (0.085s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.9 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 74:63:07:ed:00:c0:8a:be:82:e2:6b:07:62:b9:b4:c8 (RSA)
+|   256 a7:79:3c:8a:78:68:f4:8e:84:c1:89:ec:36:af:58:2c (ECDSA)
+|_  256 a2:16:58:58:71:4e:7f:94:df:a8:8b:98:43:71:7c:98 (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Did not follow redirect to http://lookup.thm
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=2/14%OT=22%CT=1%CU=38972%PV=Y%DS=3%DC=T%G=Y%TM=69907A6
+OS:A%P=x86_64-pc-linux-gnu)SEQ(SP=104%GCD=1%ISR=105%TI=Z%CI=Z%TS=A)SEQ(SP=1
+OS:05%GCD=1%ISR=107%TI=Z%CI=Z%TS=A)SEQ(SP=106%GCD=1%ISR=10B%TI=Z%CI=Z%TS=A)
+OS:SEQ(SP=107%GCD=1%ISR=10B%TI=Z%CI=Z%TS=A)SEQ(SP=F5%GCD=1%ISR=110%TI=Z%CI=
+OS:Z%TS=A)OPS(O1=M4E8ST11NW7%O2=M4E8ST11NW7%O3=M4E8NNT11NW7%O4=M4E8ST11NW7%
+OS:O5=M4E8ST11NW7%O6=M4E8ST11)WIN(W1=F4B3%W2=F4B3%W3=F4B3%W4=F4B3%W5=F4B3%W
+OS:6=F4B3)ECN(R=Y%DF=Y%T=40%W=F507%O=M4E8NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=
+OS:O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD
+OS:=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0
+OS:%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1
+OS:(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI
+OS:=N%T=40%CD=S)
+
+Network Distance: 3 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 256/tcp)
+HOP RTT      ADDRESS
+1   85.84 ms 192.168.128.1
+2   ...
+3   85.91 ms 10.66.172.224
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 30.21 seconds
+```
+```
+┌──(kali㉿kali)-[~]
+└─$ gobuster dir -u http://10.66.172.224/ -w /usr/share/dirb/wordlists/common.txt
+===============================================================
+Gobuster v3.8
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.66.172.224/
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/dirb/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.8
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/.htpasswd            (Status: 403) [Size: 278]
+/.htaccess            (Status: 403) [Size: 278]
+/.hta                 (Status: 403) [Size: 278]
+/index.php            (Status: 302) [Size: 0] [--> http://lookup.thm]
+/server-status        (Status: 403) [Size: 278]
+Progress: 4613 / 4613 (100.00%)
+===============================================================
+Finished
+===============================================================
+```
+
+![](Obsidian%20assets/Login%20page.png)
+
