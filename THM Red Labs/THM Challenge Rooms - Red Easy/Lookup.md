@@ -448,3 +448,5 @@ pwm
 
 ```
 
+> [!info]
+> Was curious about this pwm file as it must be to do with think or somethiing to allow me to PE and couldn't execture with nano/cat so looking online i found strings which ust prints string text within the file.
