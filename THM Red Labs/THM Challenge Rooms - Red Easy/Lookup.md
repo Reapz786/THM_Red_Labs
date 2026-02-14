@@ -6,6 +6,7 @@ tags:
 tools:
 date: 2026-02-14
 ---
+
 ![](Obsidian%20assets/Lookup.png)
 
 > [!important]
