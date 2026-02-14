@@ -96,3 +96,7 @@ Finished
 
 ![](Obsidian%20assets/Login%20page.png)
 
+![](Obsidian%20assets/Login%20Page%20-%20Source%20code.png)
+
+> [!note]
+> Ok
