@@ -278,6 +278,24 @@ hydra -L /usr/share/seclists/Usernames/Names/names.txt -p password123 lookup.thm
 
 ![](Obsidian%20assets/think%20%20nopassword.png)
 
+> [!note]
+> Thought user jose to SSH in with no password would work or their password being nopassword but didnt work. 
+> 
+> Wanted to understand what this elfinder was so did some research as it seems like a file manager
+
+```
+┌──(kali㉿kali)-[~]
+└─$ searchsploit Elfinder            
+------------------------------------------ ---------------------------------
+ Exploit Title                            |  Path
+------------------------------------------ ---------------------------------
+elFinder 2 - Remote Command Execution (vi | php/webapps/36925.py
+elFinder 2.1.47 - 'PHP connector' Command | php/webapps/46481.py
+elFinder PHP Connector < 2.1.48 - 'exiftr | php/remote/46539.rb
+elFinder Web file manager Version - 2.1.5 | php/webapps/51864.txt
+------------------------------------------ ---------------------------------
+Shellcodes: No Results
+```
 
 
 
