@@ -243,3 +243,9 @@ Finished
 
 ![](Obsidian%20assets/wrong%20userpw.png)
 
+![](Obsidian%20assets/admin.png)
+> [!note]
+> This tells me username admin exists but we need password. Firstly how many different/common usernames are there and can we try hydra for password cracking?
+
+
+
