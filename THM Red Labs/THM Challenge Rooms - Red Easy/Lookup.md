@@ -267,5 +267,10 @@ hydra -L /usr/share/seclists/Usernames/Names/names.txt -p password123 lookup.thm
  >
 > Upon checking, this needed to be added to the /etc/hosts file
 
+![](Obsidian%20assets/files.Looktup.htm%20files.png)
+
+> [!info]
+> Ok, need to find out what we can do here via enumeration again,
+
 
 
