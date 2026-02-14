@@ -99,4 +99,5 @@ Finished
 ![](Obsidian%20assets/Login%20Page%20-%20Source%20code.png)
 
 > [!note]
-> Ok so before posting Nikto results, let's review the above - first with nmap - 2 ports only open SSH & HTTP - gobuster is not revealing any hidden directories - the login page indicates there is an exploit there possibly? burp suite can help? not sure again what im looking for but its about web enumeration for now im assuming...
+> Ok so before posting Nikto results, let's review the above - first with nmap - 2 ports only open SSH & HTTP - gobuster is not revealing any hidden directories - the login page indicates there is an exploit there possibly? burp suite can help? not sure again what im looking for but its about web enumeration for now im assuming...Anyway Nikot results below didnt reveal much.
+
